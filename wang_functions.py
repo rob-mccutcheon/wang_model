@@ -88,7 +88,7 @@ def CBIG_MFMem_rfMRI_rfMRI_BW_ode1(y,F,Nnodes):
     alpha = 0.33
     p = 0.34
     dF = np.zeros([Nnodes,4])  #F-> Nodes x 4states[dz,df,dv,dq]
-
+    dF = dF.astype(np.complex128)
     dF[:,0] = np.squeeze(np.atleast_2d(y).T - np.atleast_2d(beta*F[:,0]).T - np.atleast_2d(gamma*(F[:,1]-1)).T) #  dz: signal
     dF[:,1] = F[:,0]                             # df: flow 
     dF[:,2] = 1/tau*(F[:,1]-F[:,2]**(1/alpha))  # dv: volume
@@ -137,8 +137,7 @@ def CBIG_MFMem_rfMRI_simBOLD_downsampling(x,bin):
     else:
         T = int(np.floor(np.size(x,1)/bin)+1)
     
-
-    y = np.zeros([n, T])
+    y = np.zeros([n, T], dtype=np.complex128)
 
     for i in range(T):
         y[:,i] = np.atleast_2d(x[:, int(bin*(i))])
@@ -213,12 +212,12 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
     yT = np.zeros([Nnodes, 1])
 
     # for hemodynamic activity z0 = 0, f0 = v0 = q0 =1
-    zT = np.zeros([Nnodes, Bsamples])
-    fT = np.zeros([Nnodes,Bsamples])
+    zT = np.zeros([Nnodes, Bsamples], dtype=np.complex128)
+    fT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
     fT[:, 0] = 1
-    vT = np.zeros([Nnodes,Bsamples])
+    vT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
     vT[:, 0] = 1
-    qT = np.zeros([Nnodes,Bsamples])
+    qT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
     qT[:,0] = 1
 
     F = np.array([zT[:,0], fT[:,0], vT[:,0], qT[:,0]]).T
@@ -241,6 +240,7 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
     
     ## main body: calculation 
     y_neuro = np.zeros([Nnodes, len(k_P)])
+    y_neuro = y_neuro.astype(np.complex128)
     for i in range(0,len(k_P)):
         dy = wf.CBIG_MFMem_rfMRI_mfm_ode1(yT,parameter,SC)
         yT = yT + dy*dt + (np.atleast_2d(w_coef*dW[:,i+1000])).T

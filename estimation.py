@@ -47,7 +47,7 @@ Para_E_new = Para_E
 
 # re-paramter of Para_E 
 A = np.log(Para_E/Prior_E)
-
+A = A.astype(np.complex128)
 ## begin estimation
 
 step = 0 #counter
