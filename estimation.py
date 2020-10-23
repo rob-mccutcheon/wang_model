@@ -85,15 +85,15 @@ while step <= EstimationMaxStep:
         A=np.atleast_2d(A).T
         
     # try to parallelise
-    # for i in range(2*p):
-    #     print(i)
-    #     if i<p:
-    #         JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_P1(funcA,A,h_output,i)
-    #     else:
-    #         JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_PC1(funcA,A,i-p)
+    for i in range(2*p):
+        print(i)
+        if i<p:
+            JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_P1(funcA,A,h_output,i)
+        else:
+            JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_PC1(funcA,A,i-p)
+    ## If wanting to test script quickly can use saved version of jfk and comment out the above loop
     # import pickle
-    # pickle.dump(JFK, open('./jfk', 'wb'))
-    JFK=pickle.load(open('./jfk', 'rb'))
+    # JFK=pickle.load(open('./jfk', 'rb'))
 
     JF = JFK[:, :p] # {nT x p}
     JK = JFK[:, p:]
