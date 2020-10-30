@@ -4,6 +4,9 @@ import wang_functions as wf
 # Set paths for where structural and functional connectivity matrices are stored
 data_dir = './data'
 
+# 'DK' or 'glasser'
+atlas = 'glasser'
+
 #Set where to save parameters and correlation
 results_dir = './results'
 
@@ -11,9 +14,14 @@ results_dir = './results'
 EstimationMaxStep = 500
 
 # Load FC and SC
-FC = np.loadtxt(open(f"{data_dir}/FC.csv", "rb"), delimiter=",")
-SC = np.loadtxt(open(f"{data_dir}/SC.csv", "rb"), delimiter=",")
-SC = (SC/np.max(np.max(SC)))*0.2
+FC = np.loadtxt(open(f"{data_dir}/FC_{atlas}.csv", "rb"), delimiter=",")
+SC = np.loadtxt(open(f"{data_dir}/SC_{atlas}.csv", "rb"), delimiter=",")
+
+# I've scaled glasser so that the mean value is the same as for DK, have also chopped off subcortical nodes
+if atlas=='DK':
+    SC = (SC/np.max(np.max(SC)))*0.2
+if atlas=='glasser':
+    SC = SC[:,:360][:360, :]*4
 
 # find out number of brain regions
 NumC = len(np.diag(SC))
