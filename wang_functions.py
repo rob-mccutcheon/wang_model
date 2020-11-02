@@ -44,9 +44,10 @@ def CBIG_MFMem_rfMRI_mfm_ode1(y,parameter,SC):
 
     ## total input x
     x = J*w*y+J*G*np.matmul(SC,y)+I0
+    # x = x.astype('float128')
     
     ## firing rate
-    c = (1-np.exp(-d*(a*x-b)))
+    c = (1-np.exp(-d*(a*x-b))) #get overflow warning here but doesnt seem to be a problem -> inf here causes zeros in H below
     if np.sum(c) == 0:
         error('error, check firing rate function')
     else:
@@ -88,7 +89,8 @@ def CBIG_MFMem_rfMRI_rfMRI_BW_ode1(y,F,Nnodes):
     alpha = 0.33
     p = 0.34
     dF = np.zeros([Nnodes,4])  #F-> Nodes x 4states[dz,df,dv,dq]
-    dF = dF.astype(np.complex128)
+    if F.dtype=='complex128': #only use a complex array for PC1 otherwise you end up with lots of problems with when you get infs
+        dF = dF.astype(np.complex128)
     dF[:,0] = np.squeeze(np.atleast_2d(y).T - np.atleast_2d(beta*F[:,0]).T - np.atleast_2d(gamma*(F[:,1]-1)).T) #  dz: signal
     dF[:,1] = F[:,0]                             # df: flow 
     dF[:,2] = 1/tau*(F[:,1]-F[:,2]**(1/alpha))  # dv: volume
@@ -145,7 +147,7 @@ def CBIG_MFMem_rfMRI_simBOLD_downsampling(x,bin):
     return y
 
 
-def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara):
+def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara, complex=True):
     '''
     %-----------------------------------------------------------------------------
     % FC_simR, CC_check] = CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara)
@@ -174,6 +176,8 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
     %
     % Written by Peng Wang and CBIG under MIT license: https://github.com/ThomasYeoLab/CBIG/blob/master/LICENSE.md
     % Translated to python by Rob McCutcheon Oct 2020
+    % I've appped the 'complex' argument to change the array types depending on whether the function
+    % call is coming from P1 (just real) or PC1 (real annd imaginary) otherwise lots of problems with infs and nans
     %----------------------------------------------------------------------------
     '''
     import wang_functions as wf
@@ -203,6 +207,7 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
     k_P = np.arange(kstart, kend+dt, dt)
     k_PP = np.arange(kstart, kend+dtt, dtt)
 
+
     # initial
     Nnodes = np.size(SC,0)
     Nsamples = len(k_P)
@@ -212,12 +217,17 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
     yT = np.zeros([Nnodes, 1])
 
     # for hemodynamic activity z0 = 0, f0 = v0 = q0 =1
-    zT = np.zeros([Nnodes, Bsamples], dtype=np.complex128)
-    fT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
+    # if complex==False:
+    #     datatype='float128'
+    # if complex==True:
+    datatype='complex128'
+
+    zT = np.zeros([Nnodes, Bsamples], dtype=datatype)
+    fT = np.zeros([Nnodes,Bsamples], dtype=datatype)
     fT[:, 0] = 1
-    vT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
+    vT = np.zeros([Nnodes,Bsamples], dtype=datatype)
     vT[:, 0] = 1
-    qT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
+    qT = np.zeros([Nnodes,Bsamples], dtype=datatype)
     qT[:,0] = 1
 
     F = np.array([zT[:,0], fT[:,0], vT[:,0], qT[:,0]]).T
@@ -236,11 +246,11 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
     # warm-up
     for i in range(1000):
         dy = wf.CBIG_MFMem_rfMRI_mfm_ode1(yT,parameter,SC)
-        yT = yT + dy*dt + (np.atleast_2d(w_coef*dW[:,i])).T
+        yT = yT + dy*dt + (np.atleast_2d(w_coef*dW[:,i])).T #When working with DK this is all positive
     
     ## main body: calculation 
     y_neuro = np.zeros([Nnodes, len(k_P)])
-    y_neuro = y_neuro.astype(np.complex128)
+    y_neuro = y_neuro.astype(datatype)
     for i in range(0,len(k_P)):
         dy = wf.CBIG_MFMem_rfMRI_mfm_ode1(yT,parameter,SC)
         yT = yT + dy*dt + (np.atleast_2d(w_coef*dW[:,i+1000])).T
@@ -248,9 +258,12 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
             y_neuro[:,j] = np.squeeze(yT)
             j = j+1     
 
-    for i in range (1, len(k_PP)):
+    for i in range (1,len(k_PP)):
         dF = wf.CBIG_MFMem_rfMRI_rfMRI_BW_ode1(y_neuro[:,i-1],F,Nnodes)
+        # if np.sum(np.isnan(dF))>0:
+        #     break
         F = F + dF*dtt
+
         zT[:,i] = F[:, 0]
         fT[:,i] = F[:, 1]
         vT[:,i] = F[:, 2]

@@ -1,5 +1,8 @@
 import numpy as np
 import wang_functions as wf
+import warnings
+
+# warnings.filterwarnings('always')
 
 # Set paths for where structural and functional connectivity matrices are stored
 data_dir = './data'
@@ -11,17 +14,17 @@ atlas = 'glasser'
 results_dir = './results'
 
 # Number of fitting iterations
-EstimationMaxStep = 500
+EstimationMaxStep = 3
 
 # Load FC and SC
 FC = np.loadtxt(open(f"{data_dir}/FC_{atlas}.csv", "rb"), delimiter=",")
 SC = np.loadtxt(open(f"{data_dir}/SC_{atlas}.csv", "rb"), delimiter=",")
 
-# I've scaled glasser so that the mean value is the same as for DK, have also chopped off subcortical nodes
+# Have chopped off subcortical nodes for glasser - Nb things fall apart if using a scaling other than 0.2
 if atlas=='DK':
     SC = (SC/np.max(np.max(SC)))*0.2
 if atlas=='glasser':
-    SC = SC[:,:360][:360, :]*4
+    SC = SC[:,:360][:360, :]*0.2
 
 # find out number of brain regions
 NumC = len(np.diag(SC))
@@ -95,7 +98,7 @@ while step <= EstimationMaxStep:
     # try to parallelise
     for i in range(2*p):
         print(i)
-        if i<p:
+        if i<p: # it is alright to get warning about losing the imaginary part for P1 but not alright for PC1
             JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_P1(funcA,A,h_output,i)
         else:
             JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_PC1(funcA,A,i-p)
