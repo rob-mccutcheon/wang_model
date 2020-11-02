@@ -1,15 +1,23 @@
 import numpy as np
 import wang_functions as wf
 import warnings
+import dask
+from dask_jobqueue import SLURMCluster
 
 # warnings.filterwarnings('always')
-#
+
+# Setup cluster for parrallel computing
+cluster = SLURMCluster(cores=1, memory='2 GB', 
+                    queue='shared', interface='ib0',
+                    log_directory='./dask_logs')
+cluster.scale(200)
+client = dask.distributed.Client(cluster)
 
 # Set paths for where structural and functional connectivity matrices are stored
 data_dir = './data'
 
 # 'DK' or 'glasser'
-atlas = 'glasser'
+atlas = 'DK'
 
 #Set where to save parameters and correlation
 results_dir = './results'
@@ -64,13 +72,13 @@ A = A.astype(np.complex128)
 
 step = 0 #counter
 
-CC_check_step = np.squeeze(np.zeros([1,EstimationMaxStep+1]) )    #save the fitting criterion, here is the goodness of fit, same as rrr below
+CC_check_step = np.squeeze(np.zeros([1,EstimationMaxStep+1]))    #save the fitting criterion, here is the goodness of fit, same as rrr below
 lembda_step_save = np.zeros([n,EstimationMaxStep])    #save the Ce
 rrr = np.zeros([1,EstimationMaxStep])                 #save the goodness of fit
 rrr_z = np.zeros([1,EstimationMaxStep])              #save the correlation between emprical FC and simulated FC, z-transfered
 Para_E_step_save = np.zeros([p,EstimationMaxStep])    #save the estimated parameter
 
-while step <= EstimationMaxStep:
+while step <= (EstimationMaxStep-1):
     print(step)
     Nstate = step
     Para_E_step = Para_E
@@ -97,12 +105,24 @@ while step <= EstimationMaxStep:
         A=np.atleast_2d(A).T
         
     # try to parallelise
+    res1, res2 = [], []
     for i in range(2*p):
         print(i)
         if i<p: # it is alright to get warning about losing the imaginary part for P1 but not alright for PC1
-            JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_P1(funcA,A,h_output,i)
+            res = dask.delayed(wf.CBIG_MFMem_rfMRI_diff_P1)(funcA,A,h_output,i)
+            res1.append(res)
         else:
-            JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_PC1(funcA,A,i-p)
+            res = dask.delayed(wf.CBIG_MFMem_rfMRI_diff_PC1)(funcA,A,i-p)
+            res1.append(res)
+    res1 = dask.compute(*res1)
+    JFK[:,:]=np.array(res1).T
+        # non parallel version
+        #     print(i)
+        # if i<p: # it is alright to get warning about losing the imaginary part for P1 but not alright for PC1
+        #     JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_P1(funcA,A,h_output,i)
+        # else:
+        #     JFK[:,i] = wf.CBIG_MFMem_rfMRI_diff_PC1(funcA,A,i-p)
+
     ## If wanting to test script quickly can use saved version of jfk and comment out the above loop
     # import pickle
     # JFK=pickle.load(open('./jfk', 'rb'))
@@ -383,5 +403,7 @@ print(Para_E)
 
 #save estimated parameter and correlation between FCs (z-transfered) to a text file
 final_results = np.append(Para_E, rrr_z_max)
-np.savetxt(f'{results_dir}/final_parameters.txt', final_results)
+np.savetxt(f'{results_dir}/final_parameters2.txt', final_results)
 
+# Shutdown the cluster
+client.shutdown()
