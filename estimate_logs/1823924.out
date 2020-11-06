@@ -1,0 +1,190 @@
+4
+subject 1004_01_MR
+start cluster 09:20:49
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 39735 instead
+  warnings.warn(
+0
+parallel submitted
+09:21:05
+parallel finished
+09:23:50
+estimation.py:143: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+start ppi0
+09:23:54
+start mi0
+09:23:54
+start mi0 range(p) 1 loop
+09:23:54
+finish mi0 range(p) 1 loop
+09:23:54
+start mi0 range(p) 2 loop
+09:23:54
+finish mi0 range(p) 2 loop
+09:23:54
+start mi0 range(NT) loop
+09:23:54
+finish mi0 range(NT) loop
+09:23:54
+start mi0 range(n) loop
+09:23:54
+                             P: 39.6 MiB
+                           JFK:  4.8 MiB
+              Para_E_step_save: 539.2 KiB
+                  dlddpara_FDK: 297.7 KiB
+                     A_Prior_C: 148.9 KiB
+                    invPrior_C: 148.9 KiB
+                   inv_JinvCeJ: 148.9 KiB
+                            SC: 36.2 KiB
+                       FC_mask: 36.2 KiB
+                  h_output_FDK: 35.7 KiB
+0
+estimation.py:278: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+finish mi0 range(n) loop
+09:23:54
+start mi0 range(n) 2loop
+09:23:54
+finish mi0 range(n) 2loop
+09:23:54
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi1
+09:23:54
+start mi1 range(p) 1 loop
+09:23:54
+finish mi1 range(p) 1 loop
+09:23:54
+start mi1 range(p) 2 loop
+09:23:54
+finish mi1 range(p) 2 loop
+09:23:54
+start mi1 range(NT) loop
+09:23:54
+finish mi1 range(NT) loop
+09:23:54
+start mi1 range(n) loop
+09:23:54
+                             P: 39.6 MiB
+                           JFK:  4.8 MiB
+              Para_E_step_save: 539.2 KiB
+                  dlddpara_FDK: 297.7 KiB
+                     A_Prior_C: 148.9 KiB
+                    invPrior_C: 148.9 KiB
+                   inv_JinvCeJ: 148.9 KiB
+                            SC: 36.2 KiB
+                       FC_mask: 36.2 KiB
+                  h_output_FDK: 35.7 KiB
+0
+finish mi1 range(n) loop
+09:23:55
+start mi1 range(n) 2loop
+09:23:55
+finish mi1 range(n) 2loop
+09:23:55
+[[-2.88589849]]
+end mi1 loop
+09:23:55
+estep
+09:23:55
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation.py:348: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation.py:355: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation.py:359: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation.py:363: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+end estep
+09:24:11
+start ppi1
+09:24:11
+start mi0
+09:24:11
+start mi0 range(p) 1 loop
+09:24:11
+finish mi0 range(p) 1 loop
+09:24:11
+start mi0 range(p) 2 loop
+09:24:11
+finish mi0 range(p) 2 loop
+09:24:11
+start mi0 range(NT) loop
+09:24:11
+finish mi0 range(NT) loop
+09:24:11
+start mi0 range(n) loop
+09:24:11
+                             P: 39.6 MiB
+                           JFK:  4.8 MiB
+              Para_E_step_save: 539.2 KiB
+                  dlddpara_FDK: 297.7 KiB
+                     A_Prior_C: 148.9 KiB
+                    invPrior_C: 148.9 KiB
+                   inv_JinvCeJ: 148.9 KiB
+                      dlddpara: 148.9 KiB
+                            SC: 36.2 KiB
+                       FC_mask: 36.2 KiB
+0
+finish mi0 range(n) loop
+09:24:11
+start mi0 range(n) 2loop
+09:24:11
+finish mi0 range(n) 2loop
+09:24:11
+start mi1
+09:24:11
+start mi1 range(p) 1 loop
+09:24:11
+finish mi1 range(p) 1 loop
+09:24:11
+start mi1 range(p) 2 loop
+09:24:11
+finish mi1 range(p) 2 loop
+09:24:11
+start mi1 range(NT) loop
+09:24:11
+finish mi1 range(NT) loop
+09:24:11
+start mi1 range(n) loop
+09:24:11
+                             P: 39.6 MiB
+                           JFK:  4.8 MiB
+              Para_E_step_save: 539.2 KiB
+                  dlddpara_FDK: 297.7 KiB
+                     A_Prior_C: 148.9 KiB
+                    invPrior_C: 148.9 KiB
+                   inv_JinvCeJ: 148.9 KiB
+                      dlddpara: 148.9 KiB
+                            SC: 36.2 KiB
+                       FC_mask: 36.2 KiB
+0
+finish mi1 range(n) loop
+09:24:11
+start mi1 range(n) 2loop
+09:24:11
+finish mi1 range(n) 2loop
+09:24:11
+[[-2.88589849]]
+end mi1 loop
+09:24:11
+estep
+09:24:11
+end estep
+09:24:26
+end pa09:24:26
+goodness of fit correlation [0.08815424]
+start cluster 09:24:26
+1
+parallel submitted
+09:24:42
+slurmstepd: error: *** JOB 1823924 ON nodeb22 CANCELLED AT 2020-11-06T09:37:36 ***

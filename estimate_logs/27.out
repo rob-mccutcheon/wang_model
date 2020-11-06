@@ -1,0 +1,537 @@
+27
+0
+start cluster 13:55:23
+parallel submitted
+13:55:38
+parallel finished
+13:57:32
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 13:57:37
+start ppi 0 13:57:37
+start mi 0 13:57:37
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 13:57:37
+finish mi1 range(NT) loop
+start mi 2 13:57:37
+finish mi2 range(NT) loop
+start mi 3 13:57:38
+finish mi3 range(NT) loop
+start mi 4 13:57:38
+finish mi4 range(NT) loop
+[[-2.0028163]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 13:57:52
+start mi 0 13:57:52
+finish mi0 range(NT) loop
+start mi 1 13:57:53
+finish mi1 range(NT) loop
+start mi 2 13:57:53
+finish mi2 range(NT) loop
+start mi 3 13:57:53
+finish mi3 range(NT) loop
+start mi 4 13:57:53
+finish mi4 range(NT) loop
+[[-2.06530835]]
+goodness of fit correlation [0.05035639]
+1
+start cluster 13:58:07
+parallel submitted
+13:58:23
+parallel finished
+14:00:16
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:00:19
+start ppi 0 14:00:19
+start mi 0 14:00:19
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:00:19
+finish mi1 range(NT) loop
+start mi 2 14:00:19
+finish mi2 range(NT) loop
+start mi 3 14:00:19
+finish mi3 range(NT) loop
+start mi 4 14:00:20
+finish mi4 range(NT) loop
+[[-2.00777196]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:00:34
+start mi 0 14:00:34
+finish mi0 range(NT) loop
+start mi 1 14:00:34
+finish mi1 range(NT) loop
+start mi 2 14:00:34
+finish mi2 range(NT) loop
+start mi 3 14:00:34
+finish mi3 range(NT) loop
+start mi 4 14:00:35
+finish mi4 range(NT) loop
+[[-2.07026401]]
+goodness of fit correlation [0.21470639]
+2
+start cluster 14:00:49
+parallel submitted
+14:01:03
+parallel finished
+14:03:38
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:03:43
+start ppi 0 14:03:43
+start mi 0 14:03:43
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:03:43
+finish mi1 range(NT) loop
+start mi 2 14:03:43
+finish mi2 range(NT) loop
+start mi 3 14:03:43
+finish mi3 range(NT) loop
+[[-2.10960743]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:03:57
+start mi 0 14:03:57
+finish mi0 range(NT) loop
+start mi 1 14:03:58
+finish mi1 range(NT) loop
+start mi 2 14:03:58
+finish mi2 range(NT) loop
+start mi 3 14:03:58
+finish mi3 range(NT) loop
+[[-2.17211937]]
+goodness of fit correlation [0.22765626]
+3
+start cluster 14:04:12
+parallel submitted
+14:04:29
+parallel finished
+14:06:55
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:07:00
+start ppi 0 14:07:00
+start mi 0 14:07:00
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:07:00
+finish mi1 range(NT) loop
+start mi 2 14:07:01
+finish mi2 range(NT) loop
+start mi 3 14:07:01
+finish mi3 range(NT) loop
+[[-2.09561798]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:07:15
+start mi 0 14:07:15
+finish mi0 range(NT) loop
+start mi 1 14:07:15
+finish mi1 range(NT) loop
+start mi 2 14:07:16
+finish mi2 range(NT) loop
+start mi 3 14:07:16
+finish mi3 range(NT) loop
+[[-2.15813563]]
+goodness of fit correlation [0.2283751]
+4
+start cluster 14:07:30
+parallel submitted
+14:07:46
+parallel finished
+14:09:39
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:09:44
+start ppi 0 14:09:44
+start mi 0 14:09:44
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:09:45
+finish mi1 range(NT) loop
+start mi 2 14:09:45
+finish mi2 range(NT) loop
+start mi 3 14:09:45
+finish mi3 range(NT) loop
+start mi 4 14:09:46
+finish mi4 range(NT) loop
+[[-2.06552664]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:10:00
+start mi 0 14:10:00
+finish mi0 range(NT) loop
+start mi 1 14:10:00
+finish mi1 range(NT) loop
+start mi 2 14:10:00
+finish mi2 range(NT) loop
+start mi 3 14:10:00
+finish mi3 range(NT) loop
+[[-2.12799887]]
+goodness of fit correlation [0.25488559]
+5
+start cluster 14:10:15
+parallel submitted
+14:10:30
+parallel finished
+14:12:24
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:12:30
+start ppi 0 14:12:30
+start mi 0 14:12:30
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:12:30
+finish mi1 range(NT) loop
+start mi 2 14:12:30
+finish mi2 range(NT) loop
+start mi 3 14:12:31
+finish mi3 range(NT) loop
+[[-2.08028341]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:12:45
+start mi 0 14:12:45
+finish mi0 range(NT) loop
+start mi 1 14:12:45
+finish mi1 range(NT) loop
+start mi 2 14:12:45
+finish mi2 range(NT) loop
+start mi 3 14:12:46
+finish mi3 range(NT) loop
+[[-2.14280906]]
+goodness of fit correlation [0.28135395]
+6
+start cluster 14:13:00
+parallel submitted
+14:13:15
+parallel finished
+14:15:40
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:15:46
+start ppi 0 14:15:46
+start mi 0 14:15:46
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:15:46
+finish mi1 range(NT) loop
+start mi 2 14:15:46
+finish mi2 range(NT) loop
+start mi 3 14:15:46
+finish mi3 range(NT) loop
+[[-2.14050044]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:16:01
+start mi 0 14:16:01
+finish mi0 range(NT) loop
+start mi 1 14:16:01
+finish mi1 range(NT) loop
+start mi 2 14:16:01
+finish mi2 range(NT) loop
+start mi 3 14:16:02
+finish mi3 range(NT) loop
+[[-2.20300367]]
+goodness of fit correlation [0.2201458]
+7
+start cluster 14:16:16
+parallel submitted
+14:16:32
+parallel finished
+14:19:30
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:19:35
+start ppi 0 14:19:35
+start mi 0 14:19:35
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:19:36
+finish mi1 range(NT) loop
+start mi 2 14:19:36
+finish mi2 range(NT) loop
+start mi 3 14:19:36
+finish mi3 range(NT) loop
+[[-2.09500884]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:19:50
+start mi 0 14:19:50
+finish mi0 range(NT) loop
+start mi 1 14:19:51
+finish mi1 range(NT) loop
+start mi 2 14:19:51
+finish mi2 range(NT) loop
+start mi 3 14:19:51
+finish mi3 range(NT) loop
+[[-2.15752678]]
+goodness of fit correlation [0.20258201]
+8
+start cluster 14:20:06
+parallel submitted
+14:20:21
+parallel finished
+14:22:11
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:22:18
+start ppi 0 14:22:18
+start mi 0 14:22:18
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:22:18
+finish mi1 range(NT) loop
+start mi 2 14:22:19
+finish mi2 range(NT) loop
+start mi 3 14:22:19
+finish mi3 range(NT) loop
+[[-2.09099355]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:22:34
+start mi 0 14:22:34
+finish mi0 range(NT) loop
+start mi 1 14:22:34
+finish mi1 range(NT) loop
+start mi 2 14:22:34
+finish mi2 range(NT) loop
+start mi 3 14:22:34
+finish mi3 range(NT) loop
+[[-2.15351341]]
+goodness of fit correlation [0.31011113]
+9
+start cluster 14:22:49
+parallel submitted
+14:23:05
+parallel finished
+14:24:54
+estimation_orig.py:123: ComplexWarning: Casting complex values to real discards the imaginary part
+  JFK[:,:]=np.array(res1).T
+stop cluster 14:24:59
+start ppi 0 14:24:59
+start mi 0 14:24:59
+finish mi0 range(NT) loop
+estimation_orig.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
+  g[i] = g[i] + g_rest
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+start mi 1 14:25:00
+finish mi1 range(NT) loop
+start mi 2 14:25:00
+finish mi2 range(NT) loop
+start mi 3 14:25:00
+finish mi3 range(NT) loop
+[[-2.10341012]]
+/users/k1201869/wang_model/wang_functions.py:472: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_orig.py:282: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A # %newton-gauss, fisher scoring, update Para_E
+estimation_orig.py:289: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
+distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
+_GatheringFuture exception was never retrieved
+future: <_GatheringFuture finished exception=CancelledError()>
+asyncio.exceptions.CancelledError
+estimation_orig.py:293: ComplexWarning: Casting complex values to real discards the imaginary part
+  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
+estimation_orig.py:297: ComplexWarning: Casting complex values to real discards the imaginary part
+  dldpara_FDK[:,ppi] = dldpara
+start ppi 1 14:25:15
+start mi 0 14:25:15
+finish mi0 range(NT) loop
+start mi 1 14:25:15
+finish mi1 range(NT) loop
+start mi 2 14:25:15
+finish mi2 range(NT) loop
+start mi 3 14:25:15
+finish mi3 range(NT) loop
+[[-2.16592443]]
+goodness of fit correlation [0.15352088]
+0.31011112969800747
+[5.11966223e-01 5.00530185e-01 5.20996978e-01 4.99770288e-01
+ 5.05591427e-01 5.17600388e-01 6.66678108e-01 5.55634175e-01
+ 5.05084849e-01 5.24611479e-01 5.23632284e-01 5.07537769e-01
+ 4.86569894e-01 5.50120709e-01 4.99058008e-01 5.26198682e-01
+ 5.37547996e-01 5.03680184e-01 5.42014612e-01 5.01102906e-01
+ 6.09656966e-01 5.05457866e-01 5.61543872e-01 5.04900070e-01
+ 5.03993873e-01 5.72241213e-01 5.29118183e-01 5.50741848e-01
+ 5.12139376e-01 6.00422444e-01 4.96748136e-01 5.05193490e-01
+ 5.06985479e-01 5.32823637e-01 5.17276064e-01 5.03507099e-01
+ 5.27569593e-01 5.00026199e-01 5.04485041e-01 5.23349858e-01
+ 6.74912333e-01 5.25582365e-01 5.02917306e-01 5.76142002e-01
+ 4.98543371e-01 4.96017365e-01 4.97367835e-01 5.75442512e-01
+ 5.04391479e-01 5.56406813e-01 5.11332753e-01 5.04989291e-01
+ 5.31100534e-01 5.17879181e-01 5.67498507e-01 5.19788618e-01
+ 5.50237770e-01 4.94811994e-01 4.95663696e-01 5.29918222e-01
+ 5.22105567e-01 5.15108403e-01 5.33205687e-01 5.24982117e-01
+ 4.94682310e-01 5.07265882e-01 5.07465938e-01 5.13570241e-01
+ 3.42342654e-01 3.46669166e-01 3.32612013e-01 3.55601997e-01
+ 3.05373980e-01 3.43764252e-01 3.29188365e-01 3.55116460e-01
+ 3.74293522e-01 3.23229478e-01 3.77839678e-01 3.33744962e-01
+ 3.25949897e-01 3.36615211e-01 3.17105565e-01 3.56866453e-01
+ 3.48939973e-01 3.27939140e-01 3.89063401e-01 3.43334229e-01
+ 3.43777983e-01 3.66716993e-01 3.44934586e-01 3.63827618e-01
+ 3.11795113e-01 3.43132876e-01 3.22816694e-01 3.50241582e-01
+ 3.43769360e-01 3.31980226e-01 2.88517565e-01 3.16585496e-01
+ 3.14280078e-01 3.77973233e-01 3.80529843e-01 3.09709906e-01
+ 3.38365172e-01 3.71545131e-01 2.98458275e-01 3.65484835e-01
+ 3.32090727e-01 3.46748253e-01 3.74141106e-01 3.44638977e-01
+ 3.44330049e-01 3.51656993e-01 3.17953884e-01 3.39792568e-01
+ 3.17092227e-01 3.48718467e-01 3.65942364e-01 3.15075273e-01
+ 3.94477068e-01 3.48555886e-01 3.47838904e-01 3.78457257e-01
+ 3.53090167e-01 3.63551711e-01 3.17033851e-01 3.43792600e-01
+ 3.20283152e-01 3.54503063e-01 3.84523089e-01 3.66724260e-01
+ 3.04481422e-01 3.22939995e-01 3.10502182e-01 3.80755497e-01
+ 1.46284724e+00 1.01240249e-03]
