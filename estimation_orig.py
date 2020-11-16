@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import sys
-import wang_functions as wf
 import warnings
 import dask
 from dask import distributed
@@ -9,15 +8,15 @@ from dask_jobqueue import SLURMCluster
 from datetime import datetime
 import pickle
 import shutil
+import wang_functions_old as wf
 
-#subject
+print('estimation_orig')
 subject_idx=int(sys.argv[1])-1
 subject_list = pd.read_table("./data/subjects.list")
 subject = subject_list.iloc[subject_idx].values[0]
 
 # Set paths for where structural and functional connectivity matrices are stored
 data_dir = f'./data/hcp_scz/{subject}'
-
 atlas = 'dk'
 
 #Set where to save parameters and correlation
@@ -28,7 +27,7 @@ EstimationMaxStep = 500
 
 # Load FC and SC
 FC = np.loadtxt(open(f"{data_dir}/{subject}_{atlas}_pearson.csv", "rb"), delimiter=",")
-np.fill_diagonal(FC,1)
+# np.fill_diagonal(FC,1)
 SC = np.loadtxt(open(f"./data/SC_{atlas}.csv", "rb"), delimiter=",")
 SC = (SC/np.max(np.max(SC)))*0.2
 
@@ -81,12 +80,15 @@ while step <= EstimationMaxStep:
     Para_E_step = Para_E
     np.random.seed(step)
 
+
     print(f'start cluster {datetime.now().strftime("%H:%M:%S")}')
     cluster = SLURMCluster(cores=1, memory='2 GB', 
                 queue='brc', interface='em1',
                 log_directory=f'/users/k1201869/wang_model/dask_logs/dask_logs_{subject}')
     cluster.scale(jobs=50)
     client = distributed.Client(cluster)
+
+
     # calculation h_output {nT x 1}
     def funcP(Para_E, Prior_E=Prior_E,SC=SC,y=y,FC_mask=FC_mask,Nstate=Nstate,Tepochlong=14.4,TBOLD=0.72,ifRepara=0):
         FC_simR, CC_check = wf.CBIG_MFMem_rfMRI_nsolver_eul_sto(Para_E,Prior_E,SC,y,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara)
@@ -107,6 +109,7 @@ while step <= EstimationMaxStep:
     if len(A.shape)==1:
         A=np.atleast_2d(A).T
         
+    # try to parallelise
     res1 = []
     for i in range(2*p):
         if i<p: # it is alright to get warning about losing the imaginary part for P1 but not alright for PC1
@@ -125,9 +128,13 @@ while step <= EstimationMaxStep:
     client.shutdown()
     shutil.rmtree(f'/users/k1201869/wang_model/dask_logs/dask_logs_{subject}')
 
+
+    ## If wanting to test script quickly can use saved version of jfk and comment out the above loop
+    # import pickle
+    # JFK=pickle.load(open('./jfk', 'rb'))
+
     JF = JFK[:, :p] # {nT x p}
     JK = JFK[:, p:]
-    print(f'stop cluster {datetime.now().strftime("%H:%M:%S")}')
 
     # calculation of r, difference between emprical data y and model output h_output  
     r = y - h_output # {n*T x 1} 
@@ -147,7 +154,6 @@ while step <= EstimationMaxStep:
     #Estimation using Gauss-Newton and EM begin here,
     # try to parallelise
     for ppi in range(2):
-        print(f'start ppi {ppi} {datetime.now().strftime("%H:%M:%S")}')
         if ppi == 0:   #first ,J = JF     
             J = JF
             r = r_FDK
@@ -169,7 +175,6 @@ while step <= EstimationMaxStep:
 
     #-------------------commence M-step loop %----------------------------------
         for mi in range(16):
-            print(f'start mi {mi} {datetime.now().strftime("%H:%M:%S")}')
             # first computing: pinv(J'*inv(Ce)*J)
             inv_JinvCeJ = np.zeros([p,nT])
             
@@ -192,11 +197,10 @@ while step <= EstimationMaxStep:
             #step2: (inv(Ce) * J) * inv_JinvCeJ * J'   
             P = np.matmul(np.matmul(P,inv_JinvCeJ),J.T)
             #step3:  -(inv(Ce) * J * inv_JinvCeJ * J') * inv(Ce)   
-            # for i in range(nT):
-            #     P[:,i] = P[:,i]* np.squeeze(-inv_DiagCe) #bsxfun(@times, P(:,i), -inv_DiagCe');
-            P[:,:P.shape[0]//2]=(P[:,:P.shape[0]//2].T*np.squeeze(-inv_DiagCe)).T
-            P[:,P.shape[0]//2:]=(P[:,P.shape[0]//2:].T*np.squeeze(-inv_DiagCe)).T
-            print(f'finish mi{mi} range(NT) loop')
+            for i in range(nT):
+                P[:,i] = P[:,i]* np.squeeze(-inv_DiagCe) #bsxfun(@times, P(:,i), -inv_DiagCe');
+
+
             #step4: invCe - (inv(Ce) * J * inv_JinvCeJ * J' * inv(Ce) )  
             np.fill_diagonal(P, np.diag(P)+inv_DiagCe)    
 
@@ -251,7 +255,6 @@ while step <= EstimationMaxStep:
             # abort criterium of m-step
             if np.max(abs(d_lembda)) < 1e-2:
                 break
-
 
     #-------------------end M-step loop %----------------------------------
         print(lembda)
@@ -408,4 +411,4 @@ print(Para_E)
 
 #save estimated parameter and correlation between FCs (z-transfered) to a text file
 final_results = np.append(Para_E, rrr_z_max)
-np.savetxt(f'{results_dir}/final_parameters_{subject}_{atlas}_cingle_version.txt', final_results)
+np.savetxt(f'{results_dir}/final_parameters_{subject}_{atlas}_imaginaryerrors_version.txt', final_results)
