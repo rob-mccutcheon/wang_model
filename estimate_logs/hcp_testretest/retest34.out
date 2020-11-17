@@ -4770,3 +4770,25 @@ estimation_imag_fix_testretest.py:332: ComplexWarning: Casting complex values to
 imaginary won
 goodness of fit correlation [0.28443278]
 11
+parrallel submitted 06:43:58
+Traceback (most recent call last):
+  File "estimation_imag_fix_testretest.py", line 162, in <module>
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/dask/base.py", line 452, in compute
+    results = schedule(dsk, keys, **kwargs)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/client.py", line 2725, in get
+    results = self.gather(packed, asynchronous=asynchronous, direct=direct)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/client.py", line 1986, in gather
+    return self.sync(
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/client.py", line 832, in sync
+    return sync(
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/utils.py", line 340, in sync
+    raise exc.with_traceback(tb)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/utils.py", line 324, in f
+    result[0] = yield future
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/tornado/gen.py", line 735, in run
+    value = future.result()
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/client.py", line 1851, in _gather
+    raise exception.with_traceback(traceback)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/protocol/pickle.py", line 75, in loads
+    return pickle.loads(x)
+ModuleNotFoundError: No module named 'wang_functions_imag_fix'
