@@ -4,3 +4,4 @@
 /dask_logs
 /dask-worker-space
 /.ipynb_checkpoints
+/temp
