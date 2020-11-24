@@ -12,26 +12,25 @@ import shutil
 import copy
 import pickle
 
-os.chdir('/users/k1201869/wang_model/')
 
 #subject
 subject_idx = int(sys.argv[1])-1
-subject_list = pd.read_table("./data/subjects.list")
+subject_list = pd.read_table("/users/k1201869/wang_model/data/subjects.list")
 subject = subject_list.iloc[subject_idx].values[0]
 print(f'subject {subject}')
 
 # Set paths for where structural and functional connectivity matrices are stored
-data_dir = f'./data/hcp_scz/{subject}'
+data_dir = f'/users/k1201869/wang_model/data/hcp_scz/{subject}'
 
 #Set where to save parameters and correlation
-results_dir = './results'
+results_dir = '/users/k1201869/wang_model/results'
 
 # Number of fitting iterations
 EstimationMaxStep = 150
 
 # Load FC and SC
 fc_file = f'{data_dir}/{subject}_dk_pearson.csv'
-SC = np.loadtxt(open(f"./data/SC_dk.csv", "rb"), delimiter=",")
+SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/SC_dk.csv", "rb"), delimiter=",")
 FC = np.loadtxt(open(fc_file, "rb"), delimiter=",")
 SC = (SC/np.max(np.max(SC)))*0.2
 
@@ -50,9 +49,9 @@ p = 2*NumC + 2 # number of estimated parametera
 
 init_version = 0
 try:
-    init_version = int(max(os.listdir(f'./temp/{subject}')))
-    saved_variables_filename = os.listdir(f'./temp/{subject}/{init_version}')[0]
-    saved_variables = pickle.load(open(f'./temp/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
+    init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/{subject}')))
+    saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/{subject}/{init_version}')[0]
+    saved_variables = pickle.load(open(f'/users/k1201869/wang_model/temp/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
     print('loaded saved variables')
 except:
     print('no variables loaded')
@@ -114,8 +113,8 @@ for version in range(init_version, 10):
         mem = '2 GB'
         cluster = SLURMCluster(cores=1, memory=mem, 
         queue='brc', interface='em1',
-        log_directory=f'./dask_logs/dask_logs_{subject}')
-        cluster.scale(jobs=30)
+        log_directory=f'/users/k1201869/wang_model/dask_logs/dask_logs_{subject}')
+        cluster.scale(jobs=20)
         client = distributed.Client(cluster)
 
         # calculation h_output {nT x 1}
@@ -435,7 +434,7 @@ for version in range(init_version, 10):
          
         
         # Save variables so in case of crash we can recover
-        temp_directory = f'./temp/{subject}/{version}'
+        temp_directory = f'/users/k1201869/wang_model/temp/{subject}/{version}'
         if not os.path.exists(temp_directory):
             os.makedirs(temp_directory)
         saved_variables = {'step': step, 'Para_E': Para_E, 'rrr':rrr, 'rrr_z':rrr_z, 'Para_E_step_save':Para_E_step_save, 'lembda_step_save':lembda_step_save, 'CC_check_step': CC_check_step}
