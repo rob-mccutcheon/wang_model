@@ -5,3 +5,7 @@
 /dask-worker-space
 /.ipynb_checkpoints
 /temp
+/data
+/results
+/.__pycache__
+/.ipynb_checkpoints

@@ -7041,3 +7041,13 @@ future: <_GatheringFuture finished exception=CancelledError()>
 asyncio.exceptions.CancelledError
 /users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
   return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+[[-1.36336774]]
+estimation_imag_fix_testretest.py:309: ComplexWarning: Casting complex values to real discards the imaginary part
+  JinvCe[i,:] = J[:,i] * inv_DiagCe #;% J'%invCe <----- p x nT
+/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:517: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
+estimation_imag_fix_testretest.py:320: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + np.squeeze(d_A) # %newton-gauss, fisher scoring, update Para_E
+estimation_imag_fix_testretest.py:327: ComplexWarning: Casting complex values to real discards the imaginary part
+  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
