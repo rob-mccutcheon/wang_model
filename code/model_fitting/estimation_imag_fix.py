@@ -1,7 +1,7 @@
 import sys
 import os
 import numpy as np
-import wang_functions_imag_fix as wf
+from functions import wang_functions_imag_fix as wf
 from joblib import Parallel, delayed
 import pandas as pd
 import dask

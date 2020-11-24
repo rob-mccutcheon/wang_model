@@ -9,3 +9,5 @@
 /results
 /.__pycache__
 /.ipynb_checkpoints
+*/estimate_logs/**
+/code/model_fitting/dask-worker-space

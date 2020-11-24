@@ -7099,3 +7099,4 @@ Perhaps you already have a cluster running?
 Hosting the HTTP server on port 39515 instead
   warnings.warn(
 parrallel submitted 10:02:45
+slurmstepd: error: *** JOB 3033037 ON noded12 CANCELLED AT 2020-11-24T10:18:52 ***

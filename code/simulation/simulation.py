@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../model_fitting')
-import wang_functions_imag_fix as wf
+from functions import wang_functions_imag_fix as wf
 import numpy as np
 import seaborn as sns
 

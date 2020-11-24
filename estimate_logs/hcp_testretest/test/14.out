@@ -7375,3 +7375,4 @@ Traceback (most recent call last):
   File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/comm/core.py", line 275, in _raise
     raise IOError(msg)
 OSError: Timed out trying to connect to 'tcp://10.10.17.12:37326' after 10 s: Timed out trying to connect to 'tcp://10.10.17.12:37326' after 10 s: connect() didn't finish in time
+slurmstepd: error: *** JOB 3032744 ON nodeb11 CANCELLED AT 2020-11-24T10:18:52 ***
