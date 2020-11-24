@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../model_fitting')
 from functions import wang_functions_imag_fix as wf
 import numpy as np
 import seaborn as sns
@@ -8,7 +6,8 @@ subject = '1009_01_MR'
 data_dir = f'/users/k1201869/wang_model/data/hcp_scz/{subject}'
 
 # Get simulated FC
-Para_E =  np.atleast_2d(np.loadtxt(f'../..//results/output_{subject}_0.txt')[:-1]).T
+params = np.load_txt(f'../../results/output_{subject}_0.txt')[:-1]
+Para_E =  np.atleast_2d(params).T
 Prior_E = None
 SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/SC_dk.csv", "rb"), delimiter=",")
 SC = (SC/np.max(np.max(SC)))*0.2

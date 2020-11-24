@@ -5,9 +5,8 @@
 /dask-worker-space
 /.ipynb_checkpoints
 /temp
-/data
-/results
 /.__pycache__
 /.ipynb_checkpoints
 */estimate_logs/**
+/estimate_logs
 /code/model_fitting/dask-worker-space
