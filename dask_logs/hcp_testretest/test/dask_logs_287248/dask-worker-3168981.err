@@ -1,0 +1,110 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.3:35757'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-yqyl1gac', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-cw5p1x8k', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-42a6og6f', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-g4szuj3t', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-sn449o8y', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-9_xnim0o', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-s_owfgqo', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-ynwuys_7', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-hzeyc5a3', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-dcbcbj8k', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-r855omyq', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-bh5q6gp1', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-yn1l0600', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-su6ae0xq', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-zjsbeapt', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-hrq_7tp2', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-qtpysxwj', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-60hdp7av', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-wtqff3o4', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-p72ymwj1', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-o68yi6ed', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-gv2n4xqq', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-dgx7x2py', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-utow1c2w', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-sctzt_5l', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-sbwbw0gn', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-yv_f8yma', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-o3h4ju0v', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-5sym3ven', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-ndw5c7g4', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-fbdrbb8i', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-k0km5vtp', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-q7gtebph', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-3hvzhfvf', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-kihu138w', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-iva6uqw0', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-vbw26w82', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-2m_fr20x', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-vnb0sppe', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-8ielqilb', purging
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/contextlib.py:120: UserWarning: Creating scratch directories is taking a surprisingly long time. This is often due to running workers on a network file system. Consider specifying a local-directory to point workers to write scratch data to a local disk.
+  next(self.gen)
+distributed.worker - INFO -       Start worker at:     tcp://10.10.18.3:38821
+distributed.worker - INFO -          Listening to:     tcp://10.10.18.3:38821
+distributed.worker - INFO -          dashboard at:           10.10.18.3:34443
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.18.3:45178
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-4uopeyz_
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50156 remote=tcp://10.10.18.3:45178>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.18.3:45178
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50182 remote=tcp://10.10.18.3:45178>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50184 remote=tcp://10.10.18.3:45178>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50188 remote=tcp://10.10.18.3:45178>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.18.3:45178
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50192 remote=tcp://10.10.18.3:45178>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50194 remote=tcp://10.10.18.3:45178>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50198 remote=tcp://10.10.18.3:45178>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50200 remote=tcp://10.10.18.3:45178>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50202 remote=tcp://10.10.18.3:45178>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.18.3:45178
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.18.3:45178
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50232 remote=tcp://10.10.18.3:45178>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50236 remote=tcp://10.10.18.3:45178>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.18.3:45178
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.3:50240 remote=tcp://10.10.18.3:45178>
+distributed.nanny - INFO - Closing Nanny at 'tcp://10.10.18.3:35757'
+distributed.worker - INFO - Stopping worker at tcp://10.10.18.3:38821
+distributed.worker - INFO - Closed worker has not yet started: Status.undefined
+distributed.dask_worker - INFO - End worker
+Traceback (most recent call last):
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/core.py", line 295, in _
+    await asyncio.wait_for(self.start(), timeout=timeout)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/asyncio/tasks.py", line 490, in wait_for
+    raise exceptions.TimeoutError()
+asyncio.exceptions.TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/cli/dask_worker.py", line 460, in <module>
+    go()
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/cli/dask_worker.py", line 456, in go
+    main()
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/click/core.py", line 829, in __call__
+    return self.main(*args, **kwargs)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/click/core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/click/core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/click/core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/cli/dask_worker.py", line 442, in main
+    loop.run_sync(run)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/tornado/ioloop.py", line 532, in run_sync
+    return future_cell[0].result()
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/cli/dask_worker.py", line 436, in run
+    await asyncio.gather(*nannies)
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/asyncio/tasks.py", line 684, in _wrap_awaitable
+    return (yield from awaitable.__await__())
+  File "/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/core.py", line 299, in _
+    raise TimeoutError(
+asyncio.exceptions.TimeoutError: Nanny failed to start in 60 seconds

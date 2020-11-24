@@ -1,0 +1,14 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.22:34868'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.22:37939
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.22:37939
+distributed.worker - INFO -          dashboard at:          10.10.15.22:42942
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.17:45893
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-gu_8kfol
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:    tcp://10.10.15.17:45893
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 2821790 ON nodeb22 CANCELLED AT 2020-11-20T09:37:13 ***

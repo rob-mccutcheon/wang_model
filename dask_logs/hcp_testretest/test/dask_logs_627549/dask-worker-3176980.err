@@ -1,0 +1,30 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.16:36342'
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/contextlib.py:120: UserWarning: Creating scratch directories is taking a surprisingly long time. This is often due to running workers on a network file system. Consider specifying a local-directory to point workers to write scratch data to a local disk.
+  next(self.gen)
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.16:33195
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.16:33195
+distributed.worker - INFO -          dashboard at:          10.10.15.16:40451
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.13:34900
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-_z9ylv3v
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37962 remote=tcp://10.10.15.13:34900>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37964 remote=tcp://10.10.15.13:34900>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37968 remote=tcp://10.10.15.13:34900>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37974 remote=tcp://10.10.15.13:34900>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.13:34900
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:38024 remote=tcp://10.10.15.13:34900>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:38072 remote=tcp://10.10.15.13:34900>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:38124 remote=tcp://10.10.15.13:34900>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:38196 remote=tcp://10.10.15.13:34900>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.13:34900
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:38362 remote=tcp://10.10.15.13:34900>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.13:34900
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:38400 remote=tcp://10.10.15.13:34900>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.13:34900
+distributed.worker - INFO -         Registered to:    tcp://10.10.15.13:34900
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3176980 ON nodeb16 CANCELLED AT 2020-11-23T14:44:58 DUE TO TIME LIMIT ***

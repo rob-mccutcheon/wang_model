@@ -1,0 +1,26 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.16:46140'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-p2432myx', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-qk_507sv', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-af8kebct', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-rk5yr7x6', purging
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.16:45548
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.16:45548
+distributed.worker - INFO -          dashboard at:          10.10.15.16:33424
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:34601
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-61wlvwkk
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:34601
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:36044 remote=tcp://10.10.15.9:34601>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:36088 remote=tcp://10.10.15.9:34601>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:34601
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:36138 remote=tcp://10.10.15.9:34601>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:34601
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:36216 remote=tcp://10.10.15.9:34601>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:34601
+distributed.worker - INFO -         Registered to:     tcp://10.10.15.9:34601
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3150979 ON nodeb16 CANCELLED AT 2020-11-23T09:48:39 ***

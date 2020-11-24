@@ -1,0 +1,14 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.13.15:37621'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.13.15:38507
+distributed.worker - INFO -          Listening to:    tcp://10.10.13.15:38507
+distributed.worker - INFO -          dashboard at:          10.10.13.15:44040
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:38931
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-ox99j9d6
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:     tcp://10.10.0.23:38931
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 2205726 ON nodea15 CANCELLED AT 2020-11-11T08:31:37 ***

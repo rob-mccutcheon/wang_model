@@ -1,0 +1,27 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.10:38274'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.18.10:39301
+distributed.worker - INFO -          Listening to:    tcp://10.10.18.10:39301
+distributed.worker - INFO -          dashboard at:          10.10.18.10:36146
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:34478
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-vwha10e_
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.10:50452 remote=tcp://10.10.17.12:34478>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:34478
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.10:50556 remote=tcp://10.10.17.12:34478>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:34478
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.10:50582 remote=tcp://10.10.17.12:34478>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:34478
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.10:50604 remote=tcp://10.10.17.12:34478>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:34478
+distributed.worker - INFO -         Registered to:    tcp://10.10.17.12:34478
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.10:50634 remote=tcp://10.10.17.12:34478>
+distributed.worker - INFO - Stopping worker at tcp://10.10.18.10:39301
+distributed.nanny - INFO - Worker closed
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.10:50656 remote=tcp://10.10.17.12:34478>
+distributed.nanny - INFO - Closing Nanny at 'tcp://10.10.18.10:38274'
+distributed.dask_worker - INFO - End worker

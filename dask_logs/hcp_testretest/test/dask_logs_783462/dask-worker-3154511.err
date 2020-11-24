@@ -1,0 +1,20 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.6:38933'
+distributed.worker - INFO -       Start worker at:     tcp://10.10.18.6:33659
+distributed.worker - INFO -          Listening to:     tcp://10.10.18.6:33659
+distributed.worker - INFO -          dashboard at:           10.10.18.6:33601
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.4:36580
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-nn_e7p7t
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.4:36580
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.4:36580
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.4:36580
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.4:36580
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.6:54264 remote=tcp://10.10.15.4:36580>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.4:36580
+distributed.worker - INFO -         Registered to:     tcp://10.10.15.4:36580
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3154511 ON noded06 CANCELLED AT 2020-11-23T11:45:08 ***

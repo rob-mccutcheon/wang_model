@@ -1,0 +1,24 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.18:34166'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-c1ezdvlx', purging
+distributed.worker - INFO -       Start worker at:    tcp://10.10.18.18:46343
+distributed.worker - INFO -          Listening to:    tcp://10.10.18.18:46343
+distributed.worker - INFO -          dashboard at:          10.10.18.18:41067
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:42872
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-veszrmy8
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.18:57282 remote=tcp://10.10.17.12:42872>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.18:57292 remote=tcp://10.10.17.12:42872>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.18:57312 remote=tcp://10.10.17.12:42872>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.18:57334 remote=tcp://10.10.17.12:42872>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:42872
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:42872
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.18:57578 remote=tcp://10.10.17.12:42872>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.18:57682 remote=tcp://10.10.17.12:42872>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:42872
+distributed.worker - INFO -         Registered to:    tcp://10.10.17.12:42872
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3316573 ON noded18 CANCELLED AT 2020-11-24T06:11:54 DUE TO TIME LIMIT ***

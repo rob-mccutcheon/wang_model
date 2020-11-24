@@ -1,0 +1,19 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.17.18:34049'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.17.18:41914
+distributed.worker - INFO -          Listening to:    tcp://10.10.17.18:41914
+distributed.worker - INFO -          dashboard at:          10.10.17.18:38517
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:46177
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-d7pb_85g
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:    tcp://10.10.18.10:46177
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.18:39344 remote=tcp://10.10.18.10:46177>
+distributed.worker - INFO - Stopping worker at tcp://10.10.17.18:41914
+distributed.nanny - INFO - Worker closed
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.18:39362 remote=tcp://10.10.18.10:46177>
+distributed.nanny - INFO - Closing Nanny at 'tcp://10.10.17.18:34049'
+distributed.dask_worker - INFO - End worker

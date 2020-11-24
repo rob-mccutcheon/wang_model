@@ -1,0 +1,22 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.16:46351'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.16:36445
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.16:36445
+distributed.worker - INFO -          dashboard at:          10.10.15.16:42014
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:37782
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-jovtd343
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:    tcp://10.10.18.10:37782
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:433: ComplexWarning: Casting complex values to real discards the imaginary part
+  para_1[num] = para_1[num]+h1i
+distributed.comm.tcp - INFO - Connection closed before handshake completed
+distributed.comm.tcp - INFO - Connection closed before handshake completed
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:    tcp://10.10.18.10:37782
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3153895 ON nodeb16 CANCELLED AT 2020-11-23T11:29:08 ***

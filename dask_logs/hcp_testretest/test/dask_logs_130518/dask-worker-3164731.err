@@ -1,0 +1,20 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.16:38894'
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/contextlib.py:120: UserWarning: Creating scratch directories is taking a surprisingly long time. This is often due to running workers on a network file system. Consider specifying a local-directory to point workers to write scratch data to a local disk.
+  next(self.gen)
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.16:39202
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.16:39202
+distributed.worker - INFO -          dashboard at:          10.10.15.16:38968
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:37697
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-j4wrtekw
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37076 remote=tcp://10.10.18.10:37697>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:37697
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37158 remote=tcp://10.10.18.10:37697>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:37697
+distributed.worker - INFO -         Registered to:    tcp://10.10.18.10:37697
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3164731 ON nodeb16 CANCELLED AT 2020-11-23T13:47:05 DUE TO TIME LIMIT ***

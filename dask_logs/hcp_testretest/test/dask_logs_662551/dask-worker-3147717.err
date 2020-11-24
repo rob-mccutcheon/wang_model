@@ -1,0 +1,23 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.4:37847'
+distributed.worker - INFO -       Start worker at:     tcp://10.10.18.4:38259
+distributed.worker - INFO -          Listening to:     tcp://10.10.18.4:38259
+distributed.worker - INFO -          dashboard at:           10.10.18.4:42800
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:35077
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-zpfqlvtq
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:35077
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.4:38968 remote=tcp://10.10.15.9:35077>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.4:38992 remote=tcp://10.10.15.9:35077>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.4:39030 remote=tcp://10.10.15.9:35077>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.4:39058 remote=tcp://10.10.15.9:35077>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.4:39092 remote=tcp://10.10.15.9:35077>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:35077
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.4:39300 remote=tcp://10.10.15.9:35077>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:35077
+distributed.worker - INFO -         Registered to:     tcp://10.10.15.9:35077
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3147717 ON noded04 CANCELLED AT 2020-11-23T08:53:36 DUE TO TIME LIMIT ***

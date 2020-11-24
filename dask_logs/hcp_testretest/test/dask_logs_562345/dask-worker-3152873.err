@@ -1,0 +1,32 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.17.6:35715'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-9gyyu9uo', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-pbalngy4', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-xyy6zfrd', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-621h_y4k', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-wops90jk', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-p8zhrlt6', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-fvmtfl0s', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-zktivwvb', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-ehmlwoas', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-2lsed_6g', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-xt_2rb7x', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-i3n4azda', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-sn02p71w', purging
+distributed.worker - INFO -       Start worker at:     tcp://10.10.17.6:45647
+distributed.worker - INFO -          Listening to:     tcp://10.10.17.6:45647
+distributed.worker - INFO -          dashboard at:           10.10.17.6:42613
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-545gzkup
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.6:42632 remote=tcp://10.10.15.11:39989>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.6:42680 remote=tcp://10.10.15.11:39989>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.worker - INFO -         Registered to:    tcp://10.10.15.11:39989
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3152873 ON nodec06 CANCELLED AT 2020-11-23T10:46:31 ***

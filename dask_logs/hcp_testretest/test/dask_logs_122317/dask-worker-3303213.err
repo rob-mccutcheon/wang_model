@@ -1,0 +1,23 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.17.19:45170'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.17.19:44646
+distributed.worker - INFO -          Listening to:    tcp://10.10.17.19:44646
+distributed.worker - INFO -          dashboard at:          10.10.17.19:39252
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-kfc0l68n
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.19:59188 remote=tcp://10.10.17.12:43921>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.19:59198 remote=tcp://10.10.17.12:43921>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.19:59204 remote=tcp://10.10.17.12:43921>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.19:59224 remote=tcp://10.10.17.12:43921>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.19:59236 remote=tcp://10.10.17.12:43921>
+distributed.worker - INFO -         Registered to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3303213 ON nodec19 CANCELLED AT 2020-11-24T02:12:05 ***

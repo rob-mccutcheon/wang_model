@@ -1,0 +1,27 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.8:40583'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-6p8ugks3', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-5_dr6y7j', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-jj6xsdgh', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-4j4xvvqr', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-2tfq4zgw', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-g5jw5wf0', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-9rdkxhut', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-zlijjg7q', purging
+distributed.worker - INFO -       Start worker at:     tcp://10.10.18.8:42112
+distributed.worker - INFO -          Listening to:     tcp://10.10.18.8:42112
+distributed.worker - INFO -          dashboard at:           10.10.18.8:46348
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-dssd6fdq
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.8:57278 remote=tcp://10.10.17.12:43921>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.8:57390 remote=tcp://10.10.17.12:43921>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO -         Registered to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3303221 ON noded08 CANCELLED AT 2020-11-24T02:11:16 ***

@@ -1,0 +1,24 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.11:38381'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.11:34685
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.11:34685
+distributed.worker - INFO -          dashboard at:          10.10.15.11:46331
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-3wo66voq
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.11:38312 remote=tcp://10.10.15.11:39989>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.11:38437 remote=tcp://10.10.15.11:39989>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.11:38444 remote=tcp://10.10.15.11:39989>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.11:38558 remote=tcp://10.10.15.11:39989>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.11:38636 remote=tcp://10.10.15.11:39989>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.11:39989
+distributed.worker - INFO -         Registered to:    tcp://10.10.15.11:39989
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3152844 ON nodeb11 CANCELLED AT 2020-11-23T10:48:05 ***

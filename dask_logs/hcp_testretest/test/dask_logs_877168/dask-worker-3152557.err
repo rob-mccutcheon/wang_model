@@ -1,0 +1,18 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.9:46474'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-6z0tx8li', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-y4e30u96', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-ts40z2fw', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-1r987wrj', purging
+distributed.worker - INFO -       Start worker at:     tcp://10.10.15.9:38188
+distributed.worker - INFO -          Listening to:     tcp://10.10.15.9:38188
+distributed.worker - INFO -          dashboard at:           10.10.15.9:36706
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.13:41641
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-arjkrz2e
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:    tcp://10.10.15.13:41641
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3152557 ON nodeb09 CANCELLED AT 2020-11-23T11:05:41 DUE TO TIME LIMIT ***

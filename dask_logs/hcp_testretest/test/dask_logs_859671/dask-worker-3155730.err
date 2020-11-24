@@ -1,0 +1,33 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.16:44561'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-u6dqp87x', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-8wdtzevt', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-2rm5eepz', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-pzz_8evf', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-p3jhtnqv', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-eo54tmq5', purging
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.16:39841
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.16:39841
+distributed.worker - INFO -          dashboard at:          10.10.15.16:38898
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.13.8:36570
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-qlesd7bm
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.13.8:36570
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:36890 remote=tcp://10.10.13.8:36570>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.13.8:36570
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.13.8:36570
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37072 remote=tcp://10.10.13.8:36570>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.13.8:36570
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37156 remote=tcp://10.10.13.8:36570>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.13.8:36570
+distributed.worker - INFO -         Registered to:     tcp://10.10.13.8:36570
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37232 remote=tcp://10.10.13.8:36570>
+distributed.worker - INFO - Stopping worker at tcp://10.10.15.16:39841
+distributed.nanny - INFO - Worker closed
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:37310 remote=tcp://10.10.13.8:36570>
+distributed.nanny - INFO - Closing Nanny at 'tcp://10.10.15.16:44561'
+distributed.dask_worker - INFO - End worker

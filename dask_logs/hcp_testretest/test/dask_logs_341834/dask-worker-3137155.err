@@ -1,0 +1,21 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.17.5:46494'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-w6870nrj', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-loj3hj8h', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-8jetpo8q', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-wt381bki', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-1qjssp2x', purging
+distributed.worker - INFO -       Start worker at:     tcp://10.10.17.5:40121
+distributed.worker - INFO -          Listening to:     tcp://10.10.17.5:40121
+distributed.worker - INFO -          dashboard at:           10.10.17.5:33734
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-k7l4emzc
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.5:55054 remote=tcp://10.10.18.10:36306>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.worker - INFO -         Registered to:    tcp://10.10.18.10:36306
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3137155 ON nodec05 CANCELLED AT 2020-11-23T06:01:33 DUE TO TIME LIMIT ***

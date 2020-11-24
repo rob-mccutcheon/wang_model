@@ -1,0 +1,27 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.2:38271'
+distributed.worker - INFO -       Start worker at:     tcp://10.10.15.2:32823
+distributed.worker - INFO -          Listening to:     tcp://10.10.15.2:32823
+distributed.worker - INFO -          dashboard at:           10.10.15.2:33777
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-tc6ybbnj
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34130 remote=tcp://10.10.18.10:36306>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34134 remote=tcp://10.10.18.10:36306>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34144 remote=tcp://10.10.18.10:36306>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34170 remote=tcp://10.10.18.10:36306>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34174 remote=tcp://10.10.18.10:36306>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34182 remote=tcp://10.10.18.10:36306>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34220 remote=tcp://10.10.18.10:36306>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.2:34254 remote=tcp://10.10.18.10:36306>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:36306
+distributed.worker - INFO -         Registered to:    tcp://10.10.18.10:36306
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3137101 ON nodeb02 CANCELLED AT 2020-11-23T06:01:04 DUE TO TIME LIMIT ***

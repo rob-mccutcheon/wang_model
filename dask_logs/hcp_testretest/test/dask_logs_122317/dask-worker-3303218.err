@@ -1,0 +1,28 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.8:40608'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-krz_5a8n', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-qittsyu1', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-63wbc3nx', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-h42z_7jq', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-5fqp2r5g', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-3t4w4ajw', purging
+/users/k1201869/miniconda3/envs/python38/lib/python3.8/contextlib.py:120: UserWarning: Creating scratch directories is taking a surprisingly long time. This is often due to running workers on a network file system. Consider specifying a local-directory to point workers to write scratch data to a local disk.
+  next(self.gen)
+distributed.worker - INFO -       Start worker at:     tcp://10.10.18.8:40757
+distributed.worker - INFO -          Listening to:     tcp://10.10.18.8:40757
+distributed.worker - INFO -          dashboard at:           10.10.18.8:43961
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-ay1k3e5_
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.8:57260 remote=tcp://10.10.17.12:43921>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.8:57268 remote=tcp://10.10.17.12:43921>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:43921
+distributed.worker - INFO -         Registered to:    tcp://10.10.17.12:43921
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3303218 ON noded08 CANCELLED AT 2020-11-24T02:11:25 ***

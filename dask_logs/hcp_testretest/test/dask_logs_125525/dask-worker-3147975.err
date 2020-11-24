@@ -1,0 +1,14 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.13:44804'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.13:41570
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.13:41570
+distributed.worker - INFO -          dashboard at:          10.10.15.13:37579
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.15.13:45384
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-b3fb6m58
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:    tcp://10.10.15.13:45384
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3147975 ON nodeb13 CANCELLED AT 2020-11-23T08:57:36 DUE TO TIME LIMIT ***

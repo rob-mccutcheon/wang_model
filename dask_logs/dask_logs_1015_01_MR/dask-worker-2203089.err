@@ -1,0 +1,49 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.17:34520'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-f6vnytck', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-3ci4ao7l', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-s1q8l91y', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-7vexrlg3', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-lpl93107', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-sunsj9lb', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-ndyx02xj', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-idfzz9fs', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-9uf6ntql', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-2661x5xi', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-cot7sh1c', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-qojr6skb', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-kfds7a9_', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-2nr4rpm8', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-cqrm29m7', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-pt8zll5r', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-y6fujrnh', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-vith1iib', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-6o02le1r', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-xexqe5fd', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-ga614pq6', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-w_apkacu', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-kye0a47e', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-dvrp0k1f', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-dd15wgos', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-wsrijdlz', purging
+distributed.worker - INFO -       Start worker at:    tcp://10.10.18.17:45277
+distributed.worker - INFO -          Listening to:    tcp://10.10.18.17:45277
+distributed.worker - INFO -          dashboard at:          10.10.18.17:36093
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-hllo_esn
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:59734 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:59834 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:59906 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:60078 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.worker - INFO -         Registered to:     tcp://10.10.0.23:32856
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 2203089 ON noded17 CANCELLED AT 2020-11-11T02:02:25 DUE TO TIME LIMIT ***

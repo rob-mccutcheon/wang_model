@@ -1,0 +1,24 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.16:36752'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.15.16:46266
+distributed.worker - INFO -          Listening to:    tcp://10.10.15.16:46266
+distributed.worker - INFO -          dashboard at:          10.10.15.16:35266
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:37326
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-fjic4u4x
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:37326
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:37326
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:52418 remote=tcp://10.10.17.12:37326>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:52450 remote=tcp://10.10.17.12:37326>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.17.12:37326
+distributed.worker - INFO -         Registered to:    tcp://10.10.17.12:37326
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:52640 remote=tcp://10.10.17.12:37326>
+distributed.worker - INFO - Stopping worker at tcp://10.10.15.16:46266
+distributed.nanny - INFO - Worker closed
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.15.16:52738 remote=tcp://10.10.17.12:37326>
+distributed.nanny - INFO - Closing Nanny at 'tcp://10.10.15.16:36752'
+distributed.dask_worker - INFO - End worker

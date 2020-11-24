@@ -1,0 +1,23 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.17.12:42521'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-0zl69yy_', purging
+distributed.worker - INFO -       Start worker at:    tcp://10.10.17.12:45291
+distributed.worker - INFO -          Listening to:    tcp://10.10.17.12:45291
+distributed.worker - INFO -          dashboard at:          10.10.17.12:46744
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:36080
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-2rhsmy1l
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:36080
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:36080
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:36080
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.12:56670 remote=tcp://10.10.15.9:36080>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.12:56746 remote=tcp://10.10.15.9:36080>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:36080
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.12:56786 remote=tcp://10.10.15.9:36080>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.15.9:36080
+distributed.worker - INFO -         Registered to:     tcp://10.10.15.9:36080
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 3138709 ON nodec12 CANCELLED AT 2020-11-23T06:23:33 DUE TO TIME LIMIT ***

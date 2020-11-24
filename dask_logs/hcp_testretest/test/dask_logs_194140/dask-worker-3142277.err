@@ -1,0 +1,35 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.17.17:37962'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-o_v785c7', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-a8tanuvf', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-np467ey5', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-bjgxgz3b', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-ewz7epei', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-zenl6jeg', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-skyo9gf0', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-dner9f0a', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-11ex86_2', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-b0r59bhd', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-64e8s8jp', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-wi2yfhkh', purging
+distributed.worker - INFO -       Start worker at:    tcp://10.10.17.17:46833
+distributed.worker - INFO -          Listening to:    tcp://10.10.17.17:46833
+distributed.worker - INFO -          dashboard at:          10.10.17.17:40407
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:33060
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/code/model_fitting/dask-worker-space/dask-worker-space/worker-qlv76xzj
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:33060
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.17:41454 remote=tcp://10.10.18.10:33060>
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.17:41472 remote=tcp://10.10.18.10:33060>
+distributed.worker - INFO - Waiting to connect to:    tcp://10.10.18.10:33060
+distributed.worker - INFO -         Registered to:    tcp://10.10.18.10:33060
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.17:41520 remote=tcp://10.10.18.10:33060>
+distributed.worker - INFO - Stopping worker at tcp://10.10.17.17:46833
+distributed.nanny - INFO - Worker closed
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.17.17:41570 remote=tcp://10.10.18.10:33060>
+distributed.nanny - INFO - Closing Nanny at 'tcp://10.10.17.17:37962'
+distributed.dask_worker - INFO - End worker

@@ -1,0 +1,23 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.18.17:39384'
+distributed.worker - INFO -       Start worker at:    tcp://10.10.18.17:44606
+distributed.worker - INFO -          Listening to:    tcp://10.10.18.17:44606
+distributed.worker - INFO -          dashboard at:          10.10.18.17:37085
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-bj8ga1ze
+distributed.worker - INFO - -------------------------------------------------
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:59738 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:59842 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:59908 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.comm.tcp - WARNING - Closing dangling stream in <TCP  local=tcp://10.10.18.17:60080 remote=tcp://10.10.0.23:32856>
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:32856
+distributed.worker - INFO -         Registered to:     tcp://10.10.0.23:32856
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 2203087 ON noded17 CANCELLED AT 2020-11-11T02:02:25 DUE TO TIME LIMIT ***

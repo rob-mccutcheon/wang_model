@@ -1,0 +1,40 @@
+distributed.nanny - INFO -         Start Nanny at: 'tcp://10.10.15.5:43652'
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-t345bifz', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-ub82br9h', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-qrzef5b9', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-yf61bnht', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-kn9y5l5g', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-_1xfmeen', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-c_qm1f19', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-75wadzmj', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-ldo50qe4', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-diayctm1', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-zoizov77', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-1a4devzd', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-x2mswefl', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-pbakeccx', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-dkn5fzmx', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-iacxx9ti', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-cpda43f9', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-pu04ye_h', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-azgsw48h', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-9xf1emef', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-0_3_mb8t', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-co5lalwa', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-pn_u2oir', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-2_5xjj1j', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-pfrx8uz2', purging
+distributed.diskutils - INFO - Found stale lock file and directory '/users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-lr0g527v', purging
+distributed.worker - INFO -       Start worker at:     tcp://10.10.15.5:32895
+distributed.worker - INFO -          Listening to:     tcp://10.10.15.5:32895
+distributed.worker - INFO -          dashboard at:           10.10.15.5:40700
+distributed.worker - INFO - Waiting to connect to:     tcp://10.10.0.23:38931
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -               Threads:                          1
+distributed.worker - INFO -                Memory:                    2.00 GB
+distributed.worker - INFO -       Local Directory: /users/k1201869/wang_model/dask-worker-space/dask-worker-space/worker-b9dzi3tv
+distributed.worker - INFO - -------------------------------------------------
+distributed.worker - INFO -         Registered to:     tcp://10.10.0.23:38931
+distributed.worker - INFO - -------------------------------------------------
+distributed.core - INFO - Starting established connection
+slurmstepd: error: *** JOB 2205724 ON nodeb05 CANCELLED AT 2020-11-11T08:31:37 ***
