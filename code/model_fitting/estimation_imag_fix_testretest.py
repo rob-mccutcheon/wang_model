@@ -49,7 +49,7 @@ nT = n*T         # number of data samples
 # set up prior for G(globle scaling of SC), w(self-connection strength/excitatory),Sigma(noise level),Io(background input)
 p = 2*NumC + 2 # number of estimated parametera
 
-init_version = 0
+init_version = 5
 try:
     init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}')))
     saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}/{init_version}')[0]
@@ -59,7 +59,7 @@ except:
     print('no variables loaded')
 
 
-for version in range(init_version, 10):
+for version in range(init_version, 7):
     print(f'version {version}')
     Prior_E = np.zeros([p,1])
 

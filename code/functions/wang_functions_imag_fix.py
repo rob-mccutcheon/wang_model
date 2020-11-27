@@ -101,6 +101,8 @@ def CBIG_MFMem_rfMRI_mfm_ode1b(y,parameter,SC):
 
     ## total input x
     x = J*w*y+J*G*np.matmul(SC,y)+I0
+    rec = J*w*y
+    inter = J*G*np.matmul(SC,y)
     
     ## firing rate
     c = (1-np.exp(-d*(a*x-b)))
@@ -112,7 +114,7 @@ def CBIG_MFMem_rfMRI_mfm_ode1b(y,parameter,SC):
     ## synaptic activity / currents
     dy = -1/tau_s*y + gamma_s*(1-y)*H
 
-    return dy, H
+    return dy, H,  x, rec, inter
 
 
 

@@ -1,93 +1,14 @@
 29
 subject 175439
 loaded saved variables
-version 3
-113
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 46227 instead
-  warnings.warn(
-parrallel submitted 10:20:04
-parrallel finished 10:24:35
-estimation_imag_fix_testretest.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
-  inv_JinvCeJ[i,:] = J[:,i].T * inv_DiagCe
-estimation_imag_fix_testretest.py:230: ComplexWarning: Casting complex values to real discards the imaginary part
-  P[:,i] = (J[:,i]*np.squeeze(inv_DiagCe))
-estimation_imag_fix_testretest.py:250: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = -0.5*np.exp(lembda[i])*np.trace(P[T*i:T*i+T][:, T*i:T*i+T])
-estimation_imag_fix_testretest.py:255: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = g[i] + g_rest
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:502: ComplexWarning: Casting complex values to real discards the imaginary part
-  tr[i] = np.sum(temp)
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-[[-2.31433913]]
-estimation_imag_fix_testretest.py:309: ComplexWarning: Casting complex values to real discards the imaginary part
-  JinvCe[i,:] = J[:,i] * inv_DiagCe #;% J'%invCe <----- p x nT
-estimation_imag_fix_testretest.py:320: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + np.squeeze(d_A) # %newton-gauss, fisher scoring, update Para_E
-distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
-_GatheringFuture exception was never retrieved
-future: <_GatheringFuture finished exception=CancelledError()>
-asyncio.exceptions.CancelledError
-estimation_imag_fix_testretest.py:331: ComplexWarning: Casting complex values to real discards the imaginary part
-  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
-estimation_imag_fix_testretest.py:334: ComplexWarning: Casting complex values to real discards the imaginary part
-  dlddpara_FDK[:,:,ppi] = dlddpara
-estimation_imag_fix_testretest.py:335: ComplexWarning: Casting complex values to real discards the imaginary part
-  dldpara_FDK[:,ppi] = dldpara
-[[-2.25228248]]
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:517: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
-To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
-  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
-estimation_imag_fix_testretest.py:327: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
-imaginary won
-goodness of fit correlation [0.0837733]
-0.45682330795551157
-[5.18827247e-01 4.97192688e-01 4.87211054e-01 5.14005331e-01
- 5.11887195e-01 5.84124998e-01 5.58865346e-01 5.94775791e-01
- 5.28198184e-01 5.48461974e-01 5.15929429e-01 5.16849280e-01
- 4.87966760e-01 6.15768175e-01 5.27372066e-01 4.85945232e-01
- 4.81029748e-01 4.92717507e-01 4.92252250e-01 4.86240054e-01
- 5.21571050e-01 5.13783589e-01 5.22794749e-01 5.51892643e-01
- 4.88051279e-01 5.14693207e-01 5.23382638e-01 5.08285008e-01
- 6.07344719e-01 5.59682873e-01 4.91984004e-01 5.18551425e-01
- 5.21049918e-01 5.14090628e-01 4.82379305e-01 5.06572410e-01
- 5.49500999e-01 4.90849568e-01 5.04174131e-01 5.07893911e-01
- 5.57321238e-01 5.26644329e-01 5.26374199e-01 5.15184491e-01
- 5.35274090e-01 4.65611124e-01 5.05752779e-01 5.69888130e-01
- 5.09468673e-01 5.13114866e-01 4.97041692e-01 5.33863696e-01
- 5.02205523e-01 4.98021427e-01 4.80207827e-01 5.02401997e-01
- 5.28458118e-01 5.30553591e-01 4.99699213e-01 5.21202908e-01
- 5.06609934e-01 5.15478750e-01 5.27862565e-01 5.84466266e-01
- 4.84030351e-01 5.40603234e-01 5.03629165e-01 5.32168775e-01
- 3.62895231e-01 3.40436984e-01 3.33633187e-01 3.57181729e-01
- 3.41518801e-01 3.51436137e-01 3.34176457e-01 3.39187732e-01
- 3.46990692e-01 3.50998533e-01 3.36442476e-01 3.58445617e-01
- 3.38315597e-01 3.37547355e-01 3.61184936e-01 3.43783347e-01
- 3.47899968e-01 3.21313602e-01 3.50105774e-01 3.43878940e-01
- 3.44027798e-01 3.40096495e-01 3.38451844e-01 3.32149510e-01
- 3.37393396e-01 3.50295962e-01 3.12404993e-01 3.37954155e-01
- 3.42605873e-01 3.38144759e-01 3.19083281e-01 3.32530436e-01
- 3.63585583e-01 3.45729439e-01 3.53174496e-01 3.56321808e-01
- 3.33507525e-01 3.56307239e-01 3.25758444e-01 3.45603911e-01
- 3.34348209e-01 3.43830231e-01 3.35870400e-01 3.47424542e-01
- 3.42912228e-01 3.61670844e-01 3.31347539e-01 3.43514238e-01
- 3.55047673e-01 3.51417900e-01 3.47463816e-01 3.35905420e-01
- 3.47583642e-01 3.55972349e-01 3.40220898e-01 3.43688400e-01
- 3.42258823e-01 3.35933590e-01 3.23109288e-01 3.46971564e-01
- 3.18003936e-01 3.33778824e-01 3.52075841e-01 3.42818915e-01
- 3.34256166e-01 3.40325642e-01 3.56983155e-01 3.41983234e-01
- 1.62481256e+00 1.03973142e-03]
 version 4
-0
+106
 /users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 45536 instead
+Hosting the HTTP server on port 33154 instead
   warnings.warn(
-parrallel submitted 10:25:25
-parrallel finished 10:29:42
+parrallel submitted 08:52:30
+parrallel finished 08:56:48
 estimation_imag_fix_testretest.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
   inv_JinvCeJ[i,:] = J[:,i].T * inv_DiagCe
 estimation_imag_fix_testretest.py:230: ComplexWarning: Casting complex values to real discards the imaginary part
@@ -100,7 +21,7 @@ estimation_imag_fix_testretest.py:255: ComplexWarning: Casting complex values to
   tr[i] = np.sum(temp)
 /users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
   return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-[[-2.32402071]]
+[[-3.16446539]]
 estimation_imag_fix_testretest.py:309: ComplexWarning: Casting complex values to real discards the imaginary part
   JinvCe[i,:] = J[:,i] * inv_DiagCe #;% J'%invCe <----- p x nT
 estimation_imag_fix_testretest.py:320: ComplexWarning: Casting complex values to real discards the imaginary part
@@ -120,54 +41,42 @@ estimation_imag_fix_testretest.py:334: ComplexWarning: Casting complex values to
   dlddpara_FDK[:,:,ppi] = dlddpara
 estimation_imag_fix_testretest.py:335: ComplexWarning: Casting complex values to real discards the imaginary part
   dldpara_FDK[:,ppi] = dldpara
-[[-2.26196685]]
-imaginary won
-goodness of fit correlation [0.10133805]
-1
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 43865 instead
-  warnings.warn(
-parrallel submitted 10:30:32
-parrallel finished 10:34:22
-estimation_imag_fix_testretest.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
-  inv_JinvCeJ[i,:] = J[:,i].T * inv_DiagCe
-estimation_imag_fix_testretest.py:230: ComplexWarning: Casting complex values to real discards the imaginary part
-  P[:,i] = (J[:,i]*np.squeeze(inv_DiagCe))
-estimation_imag_fix_testretest.py:250: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = -0.5*np.exp(lembda[i])*np.trace(P[T*i:T*i+T][:, T*i:T*i+T])
-estimation_imag_fix_testretest.py:255: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = g[i] + g_rest
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:502: ComplexWarning: Casting complex values to real discards the imaginary part
-  tr[i] = np.sum(temp)
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-[[-2.20576322]]
-estimation_imag_fix_testretest.py:309: ComplexWarning: Casting complex values to real discards the imaginary part
-  JinvCe[i,:] = J[:,i] * inv_DiagCe #;% J'%invCe <----- p x nT
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:517: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
-To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
-  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
-estimation_imag_fix_testretest.py:320: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + np.squeeze(d_A) # %newton-gauss, fisher scoring, update Para_E
-estimation_imag_fix_testretest.py:327: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
-distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
-_GatheringFuture exception was never retrieved
-future: <_GatheringFuture finished exception=CancelledError()>
-asyncio.exceptions.CancelledError
-estimation_imag_fix_testretest.py:331: ComplexWarning: Casting complex values to real discards the imaginary part
-  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
-estimation_imag_fix_testretest.py:334: ComplexWarning: Casting complex values to real discards the imaginary part
-  dlddpara_FDK[:,:,ppi] = dlddpara
-estimation_imag_fix_testretest.py:335: ComplexWarning: Casting complex values to real discards the imaginary part
-  dldpara_FDK[:,ppi] = dldpara
-[[-2.26825832]]
+[[-3.10239961]]
 real won
-goodness of fit correlation [0.19943788]
-2
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 34264 instead
-  warnings.warn(
-parrallel submitted 10:35:12
+goodness of fit correlation [0.02734304]
+0.5298415090226671
+[4.86633076e-01 5.42368988e-01 5.83302788e-01 6.90121962e-01
+ 5.43452533e-01 5.97069892e-01 7.17595956e-01 6.38970219e-01
+ 4.98964251e-01 5.57540253e-01 6.82356117e-01 5.96235641e-01
+ 6.79576776e-01 7.04235439e-01 6.42085930e-01 5.91647319e-01
+ 4.82542654e-01 5.71130841e-01 5.56580194e-01 8.25746259e-01
+ 6.05564281e-01 5.54972326e-01 5.85373423e-01 7.49484941e-01
+ 5.76137588e-01 5.03594090e-01 5.95983537e-01 6.27661633e-01
+ 5.92723036e-01 6.29696247e-01 5.72124693e-01 6.22763877e-01
+ 5.60353858e-01 4.97059982e-01 7.75702886e-01 4.98347606e-01
+ 5.73204253e-01 8.30224036e-01 5.13340434e-01 8.41483851e-01
+ 4.57858870e-01 7.47531876e-01 6.63802968e-01 6.90785081e-01
+ 6.05529024e-01 6.98562437e-01 5.27035251e-01 6.44033495e-01
+ 6.40149747e-01 5.91622309e-01 5.59399885e-01 5.63316006e-01
+ 6.56294886e-01 8.05657236e-01 5.87676440e-01 5.14756065e-01
+ 6.30997644e-01 6.75187908e-01 7.14250982e-01 5.63868970e-01
+ 6.15053767e-01 4.94508627e-01 4.97738588e-01 5.29245811e-01
+ 5.51040825e-01 6.69871641e-01 5.98035844e-01 5.91203995e-01
+ 3.60148843e-01 3.52314604e-01 3.33420356e-01 3.39205974e-01
+ 3.42016347e-01 3.52305523e-01 3.23705484e-01 3.41659699e-01
+ 3.62162574e-01 3.44528318e-01 3.43531934e-01 3.52745063e-01
+ 3.25278037e-01 3.31580167e-01 3.46199460e-01 3.52078542e-01
+ 3.45668476e-01 3.51758087e-01 3.47277069e-01 3.32490490e-01
+ 3.35208426e-01 3.51297593e-01 3.26739831e-01 3.31714086e-01
+ 3.47672036e-01 3.58099745e-01 3.21697469e-01 3.22915060e-01
+ 3.45492506e-01 3.38060920e-01 3.21265958e-01 3.41146635e-01
+ 3.60442183e-01 3.56150694e-01 3.37067764e-01 3.66119958e-01
+ 3.69699617e-01 3.28161598e-01 3.38370894e-01 3.27497562e-01
+ 3.44195187e-01 3.34630264e-01 3.43455670e-01 3.36187971e-01
+ 3.53684403e-01 3.40072143e-01 3.55624710e-01 3.39340710e-01
+ 3.43966062e-01 3.49561396e-01 3.50813621e-01 3.63402222e-01
+ 3.45628467e-01 3.33148621e-01 3.39479512e-01 3.50862672e-01
+ 3.25314564e-01 3.35048328e-01 3.22467122e-01 3.53798730e-01
+ 2.92918746e-01 3.36381633e-01 3.58525463e-01 3.51212618e-01
+ 3.28840297e-01 3.42500628e-01 3.54333217e-01 3.39797989e-01
+ 1.46057720e+00 6.52411696e-04]

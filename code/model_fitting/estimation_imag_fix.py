@@ -57,7 +57,7 @@ except:
     print('no variables loaded')
 
 
-for version in range(init_version, 10):
+for version in range(init_version, 5):
     print(f'version {version}')
     Prior_E = np.zeros([p,1])
 

@@ -50,13 +50,13 @@ def retest_reliability(subjects, test_data, retest_data):
     return node_reliabilities
 
 
-def load_parameters(subjects, method, parameter_choice, data_path):
+def load_parameters(subjects, method, parameter_choice, data_path, num_sets=5):
     test_params = []
     retest_params = []
     for subject in subjects:
         test_param = []
         retest_param = []
-        for i in range(10):
+        for i in range(num_sets):
             try:
                 test_param.append(np.loadtxt(f'{data_path}/test/output_{subject}_{i}.txt'))
             except OSError:
