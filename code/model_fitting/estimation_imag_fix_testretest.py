@@ -25,10 +25,10 @@ print(f'subject {subject}')
 data_dir = f'/users/k1201869/wang_model/data/hcp_testretest/{dataset}/{subject}'
 
 #Set where to save parameters and correlation
-results_dir = f'/users/k1201869/wang_model/results/hcp_testretest/{dataset}'
+results_dir = f'/users/k1201869/wang_model/results/hcp_testretest/short_iterations/{dataset}'
 
 # Number of fitting iterations
-EstimationMaxStep = 150
+EstimationMaxStep = 30
 
 # Load FC and SC
 fc_file = f'{data_dir}/cm_combined.csv'
@@ -49,17 +49,17 @@ nT = n*T         # number of data samples
 # set up prior for G(globle scaling of SC), w(self-connection strength/excitatory),Sigma(noise level),Io(background input)
 p = 2*NumC + 2 # number of estimated parametera
 
-init_version = 5
+init_version = 0
 try:
-    init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}')))
-    saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}/{init_version}')[0]
-    saved_variables = pickle.load(open(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
+    init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/short_iterations/{dataset}/{subject}')))
+    saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/short_iterations/{dataset}/{subject}/{init_version}')[0]
+    saved_variables = pickle.load(open(f'/users/k1201869/wang_model/temp/hcp_testretest/short_iterations/{dataset}/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
     print('loaded saved variables')
 except:
     print('no variables loaded')
 
 
-for version in range(init_version, 7):
+for version in range(init_version, 5):
     print(f'version {version}')
     Prior_E = np.zeros([p,1])
 
@@ -430,13 +430,13 @@ for version in range(init_version, 7):
         #Abort criterium of total estimation
         if ((step>5)and(rrr[:,step] >= 0.99 or (dN < 1e-5 and rrr_z[:,step] > 0.4))):
             break
-        if ((step>100)and(rrr_z[:,step] - rrr_z[:,step-1]<=-0.10)):
+        if ((step>20)and(rrr_z[:,step] - rrr_z[:,step-1]<=-0.10)):
             break #% stop if we find a bifucation edge, it should be a good solution (Deco et al., 2013)
 
          
         
         # Save variables so in case of crash we can recover
-        temp_directory = f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}/{version}'
+        temp_directory = f'/users/k1201869/wang_model/temp/hcp_testretest/short_iterations/{dataset}/{subject}/{version}'
         if not os.path.exists(temp_directory):
             os.makedirs(temp_directory)
         saved_variables = {'step': step, 'Para_E': Para_E, 'rrr':rrr, 'rrr_z':rrr_z, 'Para_E_step_save':Para_E_step_save, 'lembda_step_save':lembda_step_save, 'CC_check_step': CC_check_step}

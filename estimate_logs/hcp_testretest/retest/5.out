@@ -1,3 +1,11 @@
 5
 subject 662551
-loaded saved variables
+no variables loaded
+version 0
+0
+Traceback (most recent call last):
+  File "estimation_imag_fix_testretest_single_param.py", line 131, in <module>
+    [h_output, CC_check] = funcP(Para_E) #h _ouput is the connectivity vector, CC_check its correlation with the empirical (After both are z-transformed)
+  File "estimation_imag_fix_testretest_single_param.py", line 124, in funcP
+    FC_simR, CC_check = wf.CBIG_MFMem_rfMRI_nsolver_eul_sto(Para_E,Prior_E,SC,y,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara, single_param=True)
+TypeError: CBIG_MFMem_rfMRI_nsolver_eul_sto() got an unexpected keyword argument 'single_param'

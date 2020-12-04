@@ -1,78 +1,11 @@
 20
 subject 177746
-loaded saved variables
-version 4
-127
-parrallel submitted 08:52:29
-parrallel finished 08:56:46
-estimation_imag_fix_testretest.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
-  inv_JinvCeJ[i,:] = J[:,i].T * inv_DiagCe
-estimation_imag_fix_testretest.py:230: ComplexWarning: Casting complex values to real discards the imaginary part
-  P[:,i] = (J[:,i]*np.squeeze(inv_DiagCe))
-estimation_imag_fix_testretest.py:250: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = -0.5*np.exp(lembda[i])*np.trace(P[T*i:T*i+T][:, T*i:T*i+T])
-estimation_imag_fix_testretest.py:255: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = g[i] + g_rest
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:502: ComplexWarning: Casting complex values to real discards the imaginary part
-  tr[i] = np.sum(temp)
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-[[-3.3062195]]
-estimation_imag_fix_testretest.py:309: ComplexWarning: Casting complex values to real discards the imaginary part
-  JinvCe[i,:] = J[:,i] * inv_DiagCe #;% J'%invCe <----- p x nT
-estimation_imag_fix_testretest.py:320: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + np.squeeze(d_A) # %newton-gauss, fisher scoring, update Para_E
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:517: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
-To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
-  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
-estimation_imag_fix_testretest.py:327: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
-distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
-_GatheringFuture exception was never retrieved
-future: <_GatheringFuture finished exception=CancelledError()>
-asyncio.exceptions.CancelledError
-estimation_imag_fix_testretest.py:331: ComplexWarning: Casting complex values to real discards the imaginary part
-  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
-estimation_imag_fix_testretest.py:334: ComplexWarning: Casting complex values to real discards the imaginary part
-  dlddpara_FDK[:,:,ppi] = dlddpara
-estimation_imag_fix_testretest.py:335: ComplexWarning: Casting complex values to real discards the imaginary part
-  dldpara_FDK[:,ppi] = dldpara
-[[-3.24416663]]
-imaginary won
-goodness of fit correlation [0.03997549]
-0.5127985465813345
-[5.47806376e-01 4.19662583e-01 4.71588151e-01 8.65083180e-01
- 5.11015544e-01 5.45851037e-01 3.32723836e-01 8.86476535e-01
- 6.58105091e-01 6.77594846e-01 5.81522853e-01 6.27748684e-01
- 5.15664107e-01 7.81431873e-01 5.86125386e-01 5.78953983e-01
- 7.43423232e-01 5.44833502e-01 5.67342070e-01 5.83106778e-01
- 5.90837769e-01 8.08550897e-01 5.31030718e-01 5.12121315e-01
- 5.12601159e-01 5.85419895e-01 5.12541895e-01 6.10861247e-01
- 8.03172433e-01 5.02679730e-01 5.28695045e-01 5.12081841e-01
- 6.50763189e-01 7.42509454e-01 5.73863838e-01 4.30505608e-01
- 8.19215038e-01 8.99094801e-01 4.84701202e-01 6.20741550e-01
- 6.42298616e-01 6.51230229e-01 6.15992502e-01 5.56917662e-01
- 5.50999623e-01 8.20937030e-01 6.01852454e-01 6.74666563e-01
- 6.57980568e-01 4.21346129e-01 6.33170176e-01 5.47817032e-01
- 4.84517713e-01 7.09411572e-01 5.07989759e-01 5.46080510e-01
- 3.56092087e-01 5.42049823e-01 4.71826080e-01 8.14662379e-01
- 7.50683852e-01 5.94964709e-01 5.48468856e-01 4.93420738e-01
- 5.09968077e-01 4.83157719e-01 5.83164501e-01 6.41768543e-01
- 3.61645312e-01 3.61224631e-01 4.39140896e-01 3.12675353e-01
- 3.59343038e-01 3.31869427e-01 3.86388707e-01 3.20607040e-01
- 3.13778779e-01 3.37932083e-01 3.49626120e-01 3.56785064e-01
- 3.28408415e-01 3.23426205e-01 3.41136584e-01 2.79386464e-01
- 3.21677560e-01 3.54444739e-01 3.10669034e-01 3.56522004e-01
- 3.41146059e-01 3.20419419e-01 3.17943871e-01 3.65775901e-01
- 3.59887211e-01 3.36579190e-01 2.85144917e-01 3.16842603e-01
- 3.28990759e-01 3.56445742e-01 3.51254179e-01 2.81914665e-01
- 3.29435139e-01 3.07494428e-01 3.50786825e-01 3.55487723e-01
- 3.13958173e-01 3.22223923e-01 3.45618502e-01 3.47065011e-01
- 3.26380483e-01 3.41123384e-01 3.41585004e-01 3.48887887e-01
- 3.20191683e-01 3.29876111e-01 3.47956054e-01 3.37940551e-01
- 3.46253085e-01 3.53318415e-01 3.47885619e-01 3.56136703e-01
- 3.83530231e-01 3.44327319e-01 3.51492233e-01 3.59114120e-01
- 3.50633672e-01 3.39102954e-01 3.54893443e-01 3.13181853e-01
- 3.18004137e-01 3.21830709e-01 3.55987115e-01 3.53893380e-01
- 3.68929025e-01 3.11801183e-01 3.48060077e-01 2.89122043e-01
- 1.60385311e+00 1.36889304e-03]
+no variables loaded
+version 0
+0
+Traceback (most recent call last):
+  File "estimation_imag_fix_testretest_single_param.py", line 131, in <module>
+    [h_output, CC_check] = funcP(Para_E) #h _ouput is the connectivity vector, CC_check its correlation with the empirical (After both are z-transformed)
+  File "estimation_imag_fix_testretest_single_param.py", line 124, in funcP
+    FC_simR, CC_check = wf.CBIG_MFMem_rfMRI_nsolver_eul_sto(Para_E,Prior_E,SC,y,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara, single_param=True)
+TypeError: CBIG_MFMem_rfMRI_nsolver_eul_sto() got an unexpected keyword argument 'single_param'

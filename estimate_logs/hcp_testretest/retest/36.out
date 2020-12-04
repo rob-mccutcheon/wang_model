@@ -1,82 +1,11 @@
 36
 subject 149741
-loaded saved variables
-version 4
-121
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/distributed/node.py:151: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 38964 instead
-  warnings.warn(
-parrallel submitted 08:52:30
-parrallel finished 08:56:43
-estimation_imag_fix_testretest.py:217: ComplexWarning: Casting complex values to real discards the imaginary part
-  inv_JinvCeJ[i,:] = J[:,i].T * inv_DiagCe
-estimation_imag_fix_testretest.py:230: ComplexWarning: Casting complex values to real discards the imaginary part
-  P[:,i] = (J[:,i]*np.squeeze(inv_DiagCe))
-estimation_imag_fix_testretest.py:250: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = -0.5*np.exp(lembda[i])*np.trace(P[T*i:T*i+T][:, T*i:T*i+T])
-estimation_imag_fix_testretest.py:255: ComplexWarning: Casting complex values to real discards the imaginary part
-  g[i] = g[i] + g_rest
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:502: ComplexWarning: Casting complex values to real discards the imaginary part
-  tr[i] = np.sum(temp)
-/users/k1201869/miniconda3/envs/python38/lib/python3.8/site-packages/numpy/core/fromnumeric.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-[[-2.91346205]]
-estimation_imag_fix_testretest.py:309: ComplexWarning: Casting complex values to real discards the imaginary part
-  JinvCe[i,:] = J[:,i] * inv_DiagCe #;% J'%invCe <----- p x nT
-estimation_imag_fix_testretest.py:320: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + np.squeeze(d_A) # %newton-gauss, fisher scoring, update Para_E
-/users/k1201869/wang_model/code/model_fitting/wang_functions_imag_fix.py:517: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
-To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
-  sol = np.linalg.lstsq(A, b)[0]    # not under-determined
-estimation_imag_fix_testretest.py:327: ComplexWarning: Casting complex values to real discards the imaginary part
-  A_FDK[:,ppi] = np.squeeze(A) + d_A #newton-gauss, fisher scoring, update Para_E
-distributed.client - ERROR - Failed to reconnect to scheduler after 10.00 seconds, closing client
-_GatheringFuture exception was never retrieved
-future: <_GatheringFuture finished exception=CancelledError()>
-asyncio.exceptions.CancelledError
-estimation_imag_fix_testretest.py:331: ComplexWarning: Casting complex values to real discards the imaginary part
-  h_output_FDK[:,ppi], CC_check_FDK[ppi] = funcP(np.atleast_2d(Para_E_new).T)
-estimation_imag_fix_testretest.py:334: ComplexWarning: Casting complex values to real discards the imaginary part
-  dlddpara_FDK[:,:,ppi] = dlddpara
-estimation_imag_fix_testretest.py:335: ComplexWarning: Casting complex values to real discards the imaginary part
-  dldpara_FDK[:,ppi] = dldpara
-[[-2.85141651]]
-imaginary won
-goodness of fit correlation [0.01056718]
-0.39798315487324726
-[5.86570360e-01 6.31494972e-01 6.11038455e-01 7.54115220e-01
- 6.02101695e-01 6.79443150e-01 6.33913219e-01 6.95274774e-01
- 5.35634267e-01 6.96757815e-01 5.12005577e-01 7.85460164e-01
- 5.78445722e-01 6.26801195e-01 4.85791775e-01 5.90094826e-01
- 6.07613578e-01 5.17655446e-01 5.77768323e-01 6.02196062e-01
- 5.93354684e-01 6.57839699e-01 5.68057061e-01 5.96138172e-01
- 5.77037949e-01 6.44335048e-01 5.66061918e-01 5.54969585e-01
- 6.87923398e-01 6.66881060e-01 5.54814237e-01 5.17903649e-01
- 4.60466460e-01 6.75950173e-01 6.04461882e-01 5.59962918e-01
- 5.88779325e-01 7.31504216e-01 6.19212821e-01 6.73838460e-01
- 6.80925610e-01 7.00807603e-01 5.69758806e-01 6.66071890e-01
- 5.26424322e-01 7.60442601e-01 5.53405343e-01 7.13861467e-01
- 5.99780683e-01 6.29621312e-01 6.59099804e-01 5.18449205e-01
- 5.71886837e-01 6.35483738e-01 6.31321313e-01 6.83133326e-01
- 6.18522445e-01 5.96072840e-01 5.51433647e-01 6.48013632e-01
- 5.67323496e-01 5.66117490e-01 6.26193318e-01 6.13378128e-01
- 4.82107909e-01 6.03647281e-01 5.71830104e-01 6.67743329e-01
- 3.53401377e-01 3.52791806e-01 3.32734770e-01 3.36006104e-01
- 3.49387667e-01 3.41335106e-01 3.30447477e-01 3.39604788e-01
- 3.60315059e-01 3.35308552e-01 3.63303566e-01 3.33629443e-01
- 3.54659511e-01 3.38865885e-01 3.68504395e-01 3.48440285e-01
- 3.40234951e-01 3.61477727e-01 3.55083973e-01 3.56223591e-01
- 3.39909923e-01 3.48401155e-01 3.29786858e-01 3.35327835e-01
- 3.60038641e-01 3.35583652e-01 3.21068146e-01 3.27122362e-01
- 3.39694793e-01 3.36108115e-01 3.55928076e-01 3.49354109e-01
- 3.68063605e-01 3.37585450e-01 3.54112829e-01 3.66499488e-01
- 3.41598032e-01 3.38336182e-01 3.51941176e-01 3.42063774e-01
- 3.27401819e-01 3.39234335e-01 3.46263296e-01 3.38337726e-01
- 3.53785173e-01 3.35410688e-01 3.50494300e-01 3.32937866e-01
- 3.54771002e-01 3.50675681e-01 3.49753796e-01 3.60994480e-01
- 3.54540922e-01 3.49544790e-01 3.39545580e-01 3.44665592e-01
- 3.26533199e-01 3.31081941e-01 3.63115799e-01 3.37592699e-01
- 3.00873322e-01 3.22852992e-01 3.43087071e-01 3.39645769e-01
- 3.43313775e-01 3.42052697e-01 3.63885145e-01 3.33398405e-01
- 1.48189874e+00 1.02379255e-03]
+no variables loaded
+version 0
+0
+Traceback (most recent call last):
+  File "estimation_imag_fix_testretest_single_param.py", line 131, in <module>
+    [h_output, CC_check] = funcP(Para_E) #h _ouput is the connectivity vector, CC_check its correlation with the empirical (After both are z-transformed)
+  File "estimation_imag_fix_testretest_single_param.py", line 124, in funcP
+    FC_simR, CC_check = wf.CBIG_MFMem_rfMRI_nsolver_eul_sto(Para_E,Prior_E,SC,y,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara, single_param=True)
+TypeError: CBIG_MFMem_rfMRI_nsolver_eul_sto() got an unexpected keyword argument 'single_param'

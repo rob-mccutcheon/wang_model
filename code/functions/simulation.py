@@ -53,3 +53,15 @@ def firing_rate(para, SC, Nstate):
             x_neuro[:,j] = np.squeeze(x)
             j = j+1     
     return y_neuro, H_neuro, x_neuro, rec, inter
+
+def vec2mat(a):
+    '''convert connectivity vector to original 2D matrix form
+    '''
+    n = int(np.sqrt(len(a)*2))+1
+    mask = np.tri(n,dtype=bool, k=-1).T # or np.arange(n)[:,None] > np.arange(n)
+    out = np.zeros((n,n),dtype='float64')
+    out[mask] = a
+    out = out + out.T
+    return out
+
+

@@ -50,21 +50,23 @@ def retest_reliability(subjects, test_data, retest_data):
     return node_reliabilities
 
 
-def load_parameters(subjects, method, parameter_choice, data_path, num_sets=5):
+def load_parameters(subjects, method, parameter_choice, data_path, num_sets=5,test_idx=0):
     test_params = []
     retest_params = []
     for subject in subjects:
         test_param = []
         retest_param = []
         for i in range(num_sets):
-            try:
-                test_param.append(np.loadtxt(f'{data_path}/test/output_{subject}_{i}.txt'))
-            except OSError:
-                pass
-            try:
-                retest_param.append(np.loadtxt(f'{data_path}/retest/output_{subject}_{i}.txt'))
-            except OSError:
-                pass
+            test_param.append(np.loadtxt(f'{data_path}/test/output_{subject}_{i}.txt'))
+            retest_param.append(np.loadtxt(f'{data_path}/retest/output_{subject}_{i}.txt'))
+            # try:
+            #     test_param.append(np.loadtxt(f'{data_path}/test/output_{subject}_{i}.txt'))
+            # except OSError:
+            #     pass
+            # try:
+            #     retest_param.append(np.loadtxt(f'{data_path}/retest/output_{subject}_{i}.txt'))
+            # except OSError:
+            #     pass
         if method == 'max':
             test_idx = np.argmax(np.array(test_param)[:,-1])
             test_params.append(test_param[test_idx][parameter_choice[0]:parameter_choice[1]])
@@ -78,6 +80,11 @@ def load_parameters(subjects, method, parameter_choice, data_path, num_sets=5):
             retest_idx = np.random.randint(len(retest_param))
             test_params.append(test_param[test_idx][parameter_choice[0]:parameter_choice[1]])
             retest_params.append(retest_param[retest_idx][parameter_choice[0]:parameter_choice[1]])
+        if method == 'match':
+            # test_idx = np.random.randint(len(test_param))
+            # test_idx = 0
+            test_params.append(test_param[test_idx][parameter_choice[0]:parameter_choice[1]])
+            retest_params.append(retest_param[test_idx][parameter_choice[0]:parameter_choice[1]])
     test_params = np.array(test_params)
     retest_params = np.array(retest_params)
     return test_params, retest_params
