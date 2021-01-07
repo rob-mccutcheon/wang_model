@@ -35,7 +35,7 @@ for i in range(45):
     # retest_cc[i,:] = bct.clustering_coef_wu(retest_cmzs[i,:,:])
 
 # Load Parameters - w:[0,68], i:[68, 136], g:[136, 137], s:[137, 138], corr = [138,139]
-parameter_choice = [136,138]
+parameter_choice = [0,68]
 match_test_params, match_retest_params = tr.load_parameters(subjects, 'match', parameter_choice, data_path=f'{results_dir}/hcp_testretest/groupSC',num_sets=1,test_idx=0)
 rand_test_params, rand_retest_params = tr.load_parameters(subjects, 'rand', parameter_choice, f'{results_dir}/hcp_testretest')
 max_test_params, max_retest_params = tr.load_parameters(subjects, 'max', parameter_choice, f'{results_dir}/hcp_testretest')
@@ -365,10 +365,31 @@ for subject in subjects2:
 group = list(np.zeros(len(corr)))+list(np.ones(len(corr)))
 sns.scatterplot(group, (corr+corr2))
 
-np.median(corr)
-
-sns.distplot(corr2)
-sns.distplot(corr)
 
 
-sns.distplot(corr)
+
+
+# firing rate - mean
+
+subjects = subjects[:26]
+for i in range(1,6):
+    a=[]
+    for item in ['x']:#, 'y', 'h', 'rec', 'inter']:
+        test_mean = []
+        retest_mean = []
+        for subject in subjects:
+            #firing rates
+            test_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/test/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
+            retest_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/retest/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
+            test_mean.append(test_firing_dict[f'{item}_mean'])
+            retest_mean.append(retest_firing_dict[f'{item}_mean'])
+        a.append(tr.retest_reliability(subjects, np.array(test_mean), np.array(retest_mean)))
+        print(np.median(a))
+        # print(tr.retest_reliability(subjects, np.atleast_2d(np.mean(np.array(test_mean),axis=1)).T, np.atleast_2d(np.mean(np.array(retest_mean), axis=1)).T))
+
+
+tr.retest_reliability(subjects, np.atleast_2d(np.mean(np.array(test_mean),axis=1)).T, np.atleast_2d(np.mean(np.array(retest_mean), axis=1)).T)
+
+np.mean(np.array(test_mean),axis=1).shape
+sns.distplot(a[4])
+

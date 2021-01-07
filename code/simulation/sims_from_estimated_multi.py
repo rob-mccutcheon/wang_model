@@ -11,10 +11,11 @@ import pickle
 home_dir = '/users/k1201869/wang_model'
 data_dir = f'{home_dir}/data'
 results_dir = f'{home_dir}/results'
+session = 'test'
 
 #subject
 subject_idx = int(sys.argv[1])-1
-subject_list = pd.read_table("/users/k1201869/wang_model/data/subjects.list")
+subject_list = pd.read_table("/users/k1201869/wang_model/data/subjects_testretest.list")
 subject = subject_list.iloc[subject_idx].values[0]
 print(f'subject {subject}')
 
@@ -25,36 +26,38 @@ SC = (SC/np.max(np.max(SC)))*0.2
 NState = 0
 firing_dict = {} #{'y_mean':[],'y_sd':[],'h_mean':[],'h_sd':[],'x_mean':[],'x_sd':[], 'rec_mean':[],'rec_sd':[], 'inter_mean':[],'inter_sd':[]}
 y_l, h_l, x_l, rec_l, inter_l =[], [], [], [], []
-for i in range(5):
-    print(counter)
-    try:
-        ParaE = np.loadtxt(f'{home_dir}/results/hcpep/testretestSC/output_{subject}_{i}.txt')[:-1]
-        ParaE = np.atleast_2d(ParaE).T
-        y,h,x,rec,inter = sim.firing_rate(ParaE, SC, NState)
-        y_l.append(y)
-        h_l.append(h)
-        x_l.append(x)
-        rec_l.append(rec)
-        inter_l.append(inter)
-    except:
-        pass
-    counter+=1
-y = np.mean(y_l,axis=0)
-h = np.mean(h_l,axis=0)
-x = np.mean(x_l,axis=0)
-rec = np.mean(rec_l,axis=0)
-inter = np.mean(inter_l,axis=0)
+for g in range(1,6):
+    for i in range(g):
+        print(counter)
+        try:
+            # ParaE = np.loadtxt(f'{home_dir}/results/hcpep/testretestSC/output_{subject}_{i}.txt')[:-1]
+            ParaE = np.loadtxt(f'{home_dir}/results/hcp_testretest/groupSC/{session}/output_{subject}_{i}.txt')[:-1]
+            ParaE = np.atleast_2d(ParaE).T
+            y,h,x,rec,inter = sim.firing_rate(ParaE, SC, NState)
+            y_l.append(y)
+            h_l.append(h)
+            x_l.append(x)
+            rec_l.append(rec)
+            inter_l.append(inter)
+        except:
+            pass
+        counter+=1
+    y = np.mean(y_l,axis=0)
+    h = np.mean(h_l,axis=0)
+    x = np.mean(x_l,axis=0)
+    rec = np.mean(rec_l,axis=0)
+    inter = np.mean(inter_l,axis=0)
 
-firing_dict['y_mean'] = np.mean(y, axis=1)
-firing_dict['y_sd']=np.std(y, axis=1)
-firing_dict['h_mean']=np.mean(h, axis=1)
-firing_dict['h_sd']=np.std(h, axis=1)
-firing_dict['x_mean']=np.mean(x, axis=1)
-firing_dict['x_sd']=np.std(x, axis=1)
-firing_dict['rec_mean']=np.mean(rec, axis=1)
-firing_dict['rec_sd']=np.std(rec, axis=1)
-firing_dict['inter_mean']=np.mean(inter, axis=1)
-firing_dict['inter_sd']=np.std(inter, axis=1)
-    
+    firing_dict['y_mean'] = np.mean(y, axis=1)
+    firing_dict['y_sd']=np.std(y, axis=1)
+    firing_dict['h_mean']=np.mean(h, axis=1)
+    firing_dict['h_sd']=np.std(h, axis=1)
+    firing_dict['x_mean']=np.mean(x, axis=1)
+    firing_dict['x_sd']=np.std(x, axis=1)
+    firing_dict['rec_mean']=np.mean(rec, axis=1)
+    firing_dict['rec_sd']=np.std(rec, axis=1)
+    firing_dict['inter_mean']=np.mean(inter, axis=1)
+    firing_dict['inter_sd']=np.std(inter, axis=1)
+        
 
-pickle.dump(firing_dict, open(f'{results_dir}/hcpep/testretestSC/secondary_analysis/firing_mean_indiv_para_{subject}.pkl', "wb"))
+    pickle.dump(firing_dict, open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/{session}/firing_mean{g}_indiv_para_{subject}.pkl', "wb"))
