@@ -43,6 +43,8 @@ def firing_rate(para, SC, Nstate):
     y_neuro = np.zeros([Nnodes, len(k_P)])
     H_neuro = np.zeros([Nnodes, len(k_P)])
     x_neuro = np.zeros([Nnodes, len(k_P)])
+    rec_neuro = np.zeros([Nnodes, len(k_P)])
+    inter_neuro = np.zeros([Nnodes, len(k_P)])
     # y_neuro = y_neuro.astype(np.complex128)
     for i in range(0,len(k_P)):
         dy, H, x, rec, inter = wf.CBIG_MFMem_rfMRI_mfm_ode1b(yT,para,SC, )
@@ -51,5 +53,19 @@ def firing_rate(para, SC, Nstate):
             y_neuro[:,j] = np.squeeze(yT)
             H_neuro[:,j] = np.squeeze(H)
             x_neuro[:,j] = np.squeeze(x)
+            rec_neuro[:,j] = np.squeeze(rec)
+            inter_neuro[:,j] = np.squeeze(inter)
             j = j+1     
-    return y_neuro, H_neuro, x_neuro, rec, inter
+    return y_neuro, H_neuro, x_neuro, rec_neuro, inter_neuro
+
+def vec2mat(a):
+    '''convert connectivity vector to original 2D matrix form
+    '''
+    n = int(np.sqrt(len(a)*2))+1
+    mask = np.tri(n,dtype=bool, k=-1).T # or np.arange(n)[:,None] > np.arange(n)
+    out = np.zeros((n,n),dtype='float64')
+    out[mask] = a
+    out = out + out.T
+    return out
+
+
