@@ -38,4 +38,3 @@ ax=sns.heatmap(a, cmap='RdBu_r', center=0.4)
 for i in range(sub_len):
     ax.hlines([num*i], *ax.get_xlim())
     ax.vlines([num*i], *ax.get_xlim())
-

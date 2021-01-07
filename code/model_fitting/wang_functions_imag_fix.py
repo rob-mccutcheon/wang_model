@@ -2,7 +2,7 @@ import numpy as np
 import copy
 import scipy
 
-def CBIG_MFMem_rfMRI_mfm_ode1(y,parameter,SC):
+def CBIG_MFMem_rfMRI_mfm_ode1(y,parameter,SC,single_param=False):
     '''
     %-----------------------------------------------------------------------------
     % dy = CBIG_MFMem_rfMRI_MFMem_ode1(y,parameter,SC)
@@ -30,9 +30,70 @@ def CBIG_MFMem_rfMRI_mfm_ode1(y,parameter,SC):
 
     # parameters for inputs and couplings
     J = 0.2609 #nA
-    w = parameter[0:np.size(SC,0)]
+    if single_param==False:
+        w = parameter[0:np.size(SC,0)]
+        G = parameter[-2]
+        I0 = parameter[np.size(SC,0):2*np.size(SC,0)]
+    if single_param==True:
+        w = parameter[0]
+        G = parameter[2]
+        I0 = parameter[1]
+
+    # parameters for firing rate
+    a = 270 #pC
+    b = 108 #kHz
+    d = 0.154  #ms
+
+    # parameters for synaptic activity/currents
+    tau_s = 0.1  #s 
+    gamma_s = 0.641 
+
+    ## total input x
+    x = J*w*y+J*G*np.matmul(SC,y)+I0
+    
+    ## firing rate
+    c = (1-np.exp(-d*(a*x-b)))
+    if np.sum(c) == 0:
+        error('error, check firing rate function')
+    else:
+        H = (a*x-b)/c
+    
+    ## synaptic activity / currents
+    dy = -1/tau_s*y + gamma_s*(1-y)*H
+
+    return dy
+
+def CBIG_MFMem_rfMRI_mfm_ode1_fixed_node(y,parameter,SC):
+    '''
+    %-----------------------------------------------------------------------------
+    % dy = CBIG_MFMem_rfMRI_MFMem_ode1(y,parameter,SC)
+    %
+    % Function for dynamical mean field model diffiential equation 1st order 
+    %
+    % Input:
+    %     - y:        current neural state
+    %     - paremter: model parameter vector {p x 1}, in order [w;I0;G], w: self-connection, I0: background, G: global scaling of SC   
+    %     - SC:       structural connectivity matrix 
+    %
+    % Output:
+    %     - dy:       change in neural state
+    %
+    % Reference: 
+    %     (Deco 2013), Resting-state functional connectivity emerges from structurally and dynamically shaped slow linear fluctuations.
+    %
+    % Written by Peng Wang and CBIG under MIT license: https://github.com/ThomasYeoLab/CBIG/blob/master/LICENSE.md
+    Translated to python by Rob McCutcheon Oct 2020
+    %----------------------------------------------------------------------------
+    '''
+
+    if np.size(parameter, 1) > 1:
+        error('Input argument ''parameter'' should be a column vector');
+
+    # parameters for inputs and couplings
+    J = 0.2609 #nA
+    w = parameter[0]
     G = parameter[-2]
-    I0 = parameter[np.size(SC,0):2*np.size(SC,0)]
+    I0 = parameter[np.size(SC,0)]
 
     # parameters for firing rate
     a = 270 #pC
@@ -101,6 +162,8 @@ def CBIG_MFMem_rfMRI_mfm_ode1b(y,parameter,SC):
 
     ## total input x
     x = J*w*y+J*G*np.matmul(SC,y)+I0
+    rec = J*w*y
+    inter = J*G*np.matmul(SC,y)
     
     ## firing rate
     c = (1-np.exp(-d*(a*x-b)))
@@ -112,7 +175,7 @@ def CBIG_MFMem_rfMRI_mfm_ode1b(y,parameter,SC):
     ## synaptic activity / currents
     dy = -1/tau_s*y + gamma_s*(1-y)*H
 
-    return dy, H
+    return dy, H,  x, rec, inter
 
 
 
@@ -203,7 +266,7 @@ def CBIG_MFMem_rfMRI_simBOLD_downsampling(x,bin):
     return y
 
 
-def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara):
+def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara,single_param=False):
     '''
     %-----------------------------------------------------------------------------
     % FC_simR, CC_check] = CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepochlong,TBOLD,ifRepara)
@@ -293,14 +356,14 @@ def CBIG_MFMem_rfMRI_nsolver_eul_sto(parameter,prior,SC,y_FC,FC_mask,Nstate,Tepo
     ## solver: Euler
     # warm-up
     for i in range(1000):
-        dy = CBIG_MFMem_rfMRI_mfm_ode1(yT,parameter,SC)
+        dy = CBIG_MFMem_rfMRI_mfm_ode1(yT,parameter,SC, single_param=single_param)
         yT = yT + dy*dt + (np.atleast_2d(w_coef*dW[:,i])).T
     
     ## main body: calculation 
     y_neuro = np.zeros([Nnodes, len(k_P)])
     y_neuro = y_neuro.astype(np.complex128)
     for i in range(0,len(k_P)):
-        dy = CBIG_MFMem_rfMRI_mfm_ode1(yT,parameter,SC)
+        dy = CBIG_MFMem_rfMRI_mfm_ode1(yT,parameter,SC,single_param=single_param)
         yT = yT + dy*dt + (np.atleast_2d(w_coef*dW[:,i+1000])).T
         if i%(dtt/dt) == 0:
             y_neuro[:,j] = np.squeeze(yT)

@@ -23,10 +23,10 @@ print(f'subject {subject}')
 data_dir = f'/users/k1201869/wang_model/data/hcp_scz/{subject}'
 
 #Set where to save parameters and correlation
-results_dir = '/users/k1201869/wang_model/results'
+results_dir = '/users/k1201869/wang_model/results/short_iterations'
 
 # Number of fitting iterations
-EstimationMaxStep = 150
+EstimationMaxStep = 30
 
 # Load FC and SC
 fc_file = f'{data_dir}/{subject}_dk_pearson.csv'
@@ -57,7 +57,7 @@ except:
     print('no variables loaded')
 
 
-for version in range(init_version, 5):
+for version in range(init_version, 15):
     print(f'version {version}')
     Prior_E = np.zeros([p,1])
 
@@ -428,7 +428,7 @@ for version in range(init_version, 5):
         #Abort criterium of total estimation
         if ((step>5)and(rrr[:,step] >= 0.99 or (dN < 1e-5 and rrr_z[:,step] > 0.4))):
             break
-        if ((step>100)and(rrr_z[:,step] - rrr_z[:,step-1]<=-0.10)):
+        if ((step>20)and(rrr_z[:,step] - rrr_z[:,step-1]<=-0.10)):
             break #% stop if we find a bifucation edge, it should be a good solution (Deco et al., 2013)
 
          

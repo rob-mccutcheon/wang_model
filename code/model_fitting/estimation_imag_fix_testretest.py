@@ -25,16 +25,23 @@ print(f'subject {subject}')
 data_dir = f'/users/k1201869/wang_model/data/hcp_testretest/{dataset}/{subject}'
 
 #Set where to save parameters and correlation
-results_dir = f'/users/k1201869/wang_model/results/hcp_testretest/{dataset}'
+results_dir = f'/users/k1201869/wang_model/results/hcp_testretest/indiv_connect/{dataset}'
 
 # Number of fitting iterations
 EstimationMaxStep = 150
 
 # Load FC and SC
 fc_file = f'{data_dir}/cm_combined.csv'
-SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/SC_dk.csv", "rb"), delimiter=",")
+# SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/SC_dk.csv", "rb"), delimiter=",")
+SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/hcp_testretest/dti_collated_retest/{subject}_SC.csv", "rb"), delimiter=" ")
+#delete if not indvi
+# valid_rois = np.concatenate((np.arange(0,34), np.arange(49,83)))
+# SC = SC[valid_rois][:,valid_rois]
+# np.fill_diagonal(SC, 0) #dfelte if not indiv
+
 FC = np.loadtxt(open(fc_file, "rb"), delimiter=" ")
 SC = (SC/np.max(np.max(SC)))*0.2
+
 
 # find out number of brain regions
 NumC = len(np.diag(SC))
@@ -49,18 +56,19 @@ nT = n*T         # number of data samples
 # set up prior for G(globle scaling of SC), w(self-connection strength/excitatory),Sigma(noise level),Io(background input)
 p = 2*NumC + 2 # number of estimated parametera
 
-init_version = 5
+init_version = 0
 try:
-    init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}')))
-    saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}/{init_version}')[0]
-    saved_variables = pickle.load(open(f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
+    init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/indiv_connect/{dataset}/{subject}')))
+    saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/hcp_testretest/indiv_connect/{dataset}/{subject}/{init_version}')[0]
+    saved_variables = pickle.load(open(f'/users/k1201869/wang_model/temp/hcp_testretest/indiv_connect/{dataset}/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
     print('loaded saved variables')
 except:
     print('no variables loaded')
 
-
-for version in range(init_version, 7):
+version_max = 5
+for version in range(init_version, version_max):
     print(f'version {version}')
+    breakloop=0
     Prior_E = np.zeros([p,1])
 
     # Basic value / expectation value     
@@ -99,10 +107,11 @@ for version in range(init_version, 7):
     Para_E_step_save = np.zeros([p,EstimationMaxStep])    #save the estimated parameter
     
     # If we have already ran some of this continue from where we left off
-    try:
-        vars().update(saved_variables)
-    except:
-        pass
+    if version==init_version:
+        try:
+            vars().update(saved_variables)
+        except:
+            pass
 
     if version>init_version:
         step=0
@@ -129,6 +138,25 @@ for version in range(init_version, 7):
             return FC_simR, CC_check
 
         [h_output, CC_check] = funcP(Para_E) #h _ouput is the connectivity vector, CC_check its correlation with the empirical (After both are z-transformed)
+        
+        # if parameterisation has reached values that produce infs the chose the best or if not good enough the skip to next version without saving
+        if np.isnan(h_output).any():
+            if step>100 or (step>50 and np.nanmax(rrr_z)>0.5):
+                rrr_z_max = np.max(rrr_z)
+                indx_max = np.argmax(rrr_z)
+                Para_E = Para_E_step_save[:,indx_max]
+                final_results = np.append(Para_E, rrr_z_max)
+                outfile = f'{results_dir}/output_{subject}_{version}.txt'
+                np.savetxt(outfile, final_results)
+                print('problematic Para - choosing best to date')
+                break
+            else:
+                version_max = version_max+1
+                breakloop = 1
+                print('problematic Para - skipping version without saving')
+                break
+
+
 
         # calculation of Jacobian, JF, JK, {nT x p }     
         JF = np.zeros([nT,p])
@@ -175,7 +203,7 @@ for version in range(init_version, 7):
 
         # prepare parallel computing of EM-algorithm
         A_old = A
-        A_FDK = np.zeros([p,2])
+        A_FDK = np.zeros([p,2]).astype(np.complex128)
         h_output_FDK = np.zeros([nT,2])
         r_FDK = r
         lembda_FDK = np.zeros([n,2])
@@ -309,13 +337,25 @@ for version in range(init_version, 7):
                 JinvCe[i,:] = J[:,i] * inv_DiagCe #;% J'%invCe <----- p x nT
 
             dlddpara = np.matmul(JinvCe,J) + invPrior_C # inv, negativ, von 2nd. derivative {p x p}  
-
             dldpara = np.matmul(JinvCe,r) + np.squeeze(np.matmul(invPrior_C, (np.squeeze(A_Prior_E) - np.squeeze(A))))# % 1st. derivative, {p x 1}
-
             JinvCe = []# %save the memory
-
-            d_A = wf.matlab_divide(dlddpara, dldpara)
-            # np.savetxt('./temp/dlddpara.csv', dlddpara.astype('float128'))
+            try:
+                d_A = wf.matlab_divide(dlddpara, dldpara)
+            except np.linalg.LinAlgError:
+                if step>100 or (step>50 and np.nanmax(rrr_z)>0.5):
+                    rrr_z_max = np.max(rrr_z)
+                    indx_max = np.argmax(rrr_z)
+                    Para_E = Para_E_step_save[:,indx_max]
+                    final_results = np.append(Para_E, rrr_z_max)
+                    outfile = f'{results_dir}/output_{subject}_{version}.txt'
+                    np.savetxt(outfile, final_results)
+                    print('LinAlgError - choosing best to date')
+                    break
+                else:
+                    version_max = version_max+1
+                    breakloop = 1
+                    print('LinAlgError - skipping version without saving')
+                    break
 
             A_FDK[:,ppi] = np.squeeze(A) + np.squeeze(d_A) # %newton-gauss, fisher scoring, update Para_E
             Para_E_new = np.exp(A_FDK[:,ppi])*np.squeeze(Prior_E)
@@ -428,7 +468,8 @@ for version in range(init_version, 7):
         print(f'goodness of fit correlation {rrr_z[:,step]}')
 
         #Abort criterium of total estimation
-        if ((step>5)and(rrr[:,step] >= 0.99 or (dN < 1e-5 and rrr_z[:,step] > 0.4))):
+
+        if ((step>20)and(rrr[:,step] >= 0.99 or (dN < 1e-5 and rrr_z[:,step] > 0.6))):
             break
         if ((step>100)and(rrr_z[:,step] - rrr_z[:,step-1]<=-0.10)):
             break #% stop if we find a bifucation edge, it should be a good solution (Deco et al., 2013)
@@ -436,10 +477,10 @@ for version in range(init_version, 7):
          
         
         # Save variables so in case of crash we can recover
-        temp_directory = f'/users/k1201869/wang_model/temp/hcp_testretest/{dataset}/{subject}/{version}'
+        temp_directory = f'/users/k1201869/wang_model/temp/hcp_testretest/indiv_connect/{dataset}/{subject}/{version}'
         if not os.path.exists(temp_directory):
             os.makedirs(temp_directory)
-        saved_variables = {'step': step, 'Para_E': Para_E, 'rrr':rrr, 'rrr_z':rrr_z, 'Para_E_step_save':Para_E_step_save, 'lembda_step_save':lembda_step_save, 'CC_check_step': CC_check_step}
+        saved_variables = {'step': step, 'Para_E': Para_E, 'rrr':rrr, 'rrr_z':rrr_z, 'Para_E_step_save':Para_E_step_save, 'lembda_step_save':lembda_step_save, 'CC_check_step': CC_check_step, 'version_max': version_max}
         pickle.dump(saved_variables, open(f'{temp_directory}/saved_variables_{step}.pkl', 'wb'))
         try:
             os.remove(f'{temp_directory}/saved_variables_{step-1}.pkl')
@@ -449,8 +490,11 @@ for version in range(init_version, 7):
         #counter
         step = step + 1
     #<-----------------------------------------End while loop, End estimation ---------
-
+    #If this version's parameters leading to infs start a new version without saving parameters:
+    if breakloop==1:
+        continue
     # End estimation, save result
+
 
     #find the best results
     rrr_z_max = np.max(rrr_z)
