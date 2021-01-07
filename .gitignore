@@ -9,4 +9,5 @@
 /.ipynb_checkpoints
 */estimate_logs/**
 /estimate_logs
+/estimate_logs/**
 /code/model_fitting/dask-worker-space
