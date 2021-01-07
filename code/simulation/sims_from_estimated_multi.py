@@ -11,7 +11,7 @@ import pickle
 home_dir = '/users/k1201869/wang_model'
 data_dir = f'{home_dir}/data'
 results_dir = f'{home_dir}/results'
-session = 'test'
+session = 'retest'
 
 #subject
 subject_idx = int(sys.argv[1])-1
