@@ -65,7 +65,7 @@ try:
 except:
     print('no variables loaded')
 
-version_max = 5
+version_max = 10
 for version in range(init_version, version_max):
     print(f'version {version}')
     breakloop=0

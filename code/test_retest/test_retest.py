@@ -36,7 +36,7 @@ for i in range(45):
 
 # Load Parameters - w:[0,68], i:[68, 136], g:[136, 137], s:[137, 138], corr = [138,139]
 parameter_choice = [0,68]
-match_test_params, match_retest_params = tr.load_parameters(subjects, 'match', parameter_choice, data_path=f'{results_dir}/hcp_testretest/groupSC',num_sets=1,test_idx=0)
+match_test_params, match_retest_params = tr.load_parameters(subjects, 'match', parameter_choice, data_path=f'{results_dir}/hcp_testretest',num_sets=1,test_idx=0)
 rand_test_params, rand_retest_params = tr.load_parameters(subjects, 'rand', parameter_choice, f'{results_dir}/hcp_testretest')
 max_test_params, max_retest_params = tr.load_parameters(subjects, 'max', parameter_choice, f'{results_dir}/hcp_testretest')
 mean_test_params, mean_retest_params = tr.load_parameters(subjects, 'mean', parameter_choice, f'{results_dir}/hcp_testretest/groupSC')
@@ -372,24 +372,85 @@ sns.scatterplot(group, (corr+corr2))
 # firing rate - mean
 
 subjects2 = subjects[:26]+subjects[27:]
-for i in range(1,4):
+tr_dict = {}
+items = ['x', 'y', 'h', 'rec', 'inter']
+for item in items:
+    tr_dict[item]=[]
+
+for i in range(1,6):
     a=[]
-    for item in ['x', 'y', 'h', 'rec', 'inter']:
+    for item in items:
         test_mean = []
         retest_mean = []
         for subject in subjects2:
             #firing rates
-            test_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/indiv_connect/secondary_analysis/test/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
-            retest_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/indiv_connect/secondary_analysis/retest/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
+            test_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/test/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
+            retest_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/retest/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
             test_mean.append(test_firing_dict[f'{item}_mean'])
             retest_mean.append(retest_firing_dict[f'{item}_mean'])
         a.append(tr.retest_reliability(subjects2, np.array(test_mean), np.array(retest_mean)))
+        tr_dict[item].append(np.median(a))
         print(f'{item} {i} {np.median(a)}')
         # print(tr.retest_reliability(subjects, np.atleast_2d(np.mean(np.array(test_mean),axis=1)).T, np.atleast_2d(np.mean(np.array(retest_mean), axis=1)).T))
 
 
 tr.retest_reliability(subjects, np.atleast_2d(np.mean(np.array(test_mean),axis=1)).T, np.atleast_2d(np.mean(np.array(retest_mean), axis=1)).T)
 
+for item in items:
+    sns.lineplot(np.arange(5), tr_dict[item])
+
+
 np.mean(np.array(test_mean),axis=1).shape
 sns.distplot(a[4])
 
+# TEsting whether matching seeds has much of an impact when looking at icc
+# Load parameter
+match_test_params0, match_retest_params0 = tr.load_parameters(subjects, 'match', [68,136], data_path=f'{results_dir}/hcp_testretest',num_sets=1,test_idx=0)
+match_test_params1, match_retest_params1 = tr.load_parameters(subjects, 'match', [68,136], data_path=f'{results_dir}/hcp_testretest',num_sets=2,test_idx=1)
+match_test_params2, match_retest_params2 = tr.load_parameters(subjects, 'match', [68,136], data_path=f'{results_dir}/hcp_testretest',num_sets=3,test_idx=2)
+match_test_params3, match_retest_params3 = tr.load_parameters(subjects, 'match', [68,136], data_path=f'{results_dir}/hcp_testretest',num_sets=4,test_idx=3)
+
+# MAtched subjects
+from scipy.stats import pearsonr
+same =[]
+for i in range(45):
+    same.append(pearsonr(match_test_params0[i], match_retest_params0[i])[0])
+    same.append(pearsonr(match_test_params1[i], match_retest_params1[i])[0])
+    same.append(pearsonr(match_test_params2[i], match_retest_params2[i])[0])
+    same.append(pearsonr(match_test_params3[i], match_retest_params3[i])[0])
+
+diff =  []
+for i in range(45):
+    diff.append(pearsonr(match_test_params0[i], match_retest_params1[i])[0])
+    diff.append(pearsonr(match_test_params1[i], match_retest_params0[i])[0])
+    diff.append(pearsonr(match_test_params0[i], match_retest_params2[i])[0])
+    diff.append(pearsonr(match_test_params1[i], match_retest_params2[i])[0])
+    diff.append(pearsonr(match_test_params0[i], match_retest_params3[i])[0])
+    diff.append(pearsonr(match_test_params1[i], match_retest_params3[i])[0])
+    diff.append(pearsonr(match_test_params2[i], match_retest_params3[i])[0])
+
+
+#unmatched subjects
+same =[]
+for i in range(45):
+    same.append(pearsonr(match_test_params0[np.random.randint(45)], match_retest_params0[np.random.randint(45)])[0])
+    same.append(pearsonr(match_test_params1[np.random.randint(45)], match_retest_params1[np.random.randint(45)])[0])
+    same.append(pearsonr(match_test_params2[np.random.randint(45)], match_retest_params2[np.random.randint(45)])[0])
+    same.append(pearsonr(match_test_params3[np.random.randint(45)], match_retest_params3[np.random.randint(45)])[0])
+
+diff =  []
+for i in range(45):
+    diff.append(pearsonr(match_test_params0[np.random.randint(45)], match_retest_params1[np.random.randint(45)])[0])
+    diff.append(pearsonr(match_test_params1[np.random.randint(45)], match_retest_params0[np.random.randint(45)])[0])
+    diff.append(pearsonr(match_test_params0[np.random.randint(45)], match_retest_params2[np.random.randint(45)])[0])
+    diff.append(pearsonr(match_test_params1[np.random.randint(45)], match_retest_params2[np.random.randint(45)])[0])
+    diff.append(pearsonr(match_test_params0[np.random.randint(45)], match_retest_params3[np.random.randint(45)])[0])
+    diff.append(pearsonr(match_test_params1[np.random.randint(45)], match_retest_params3[np.random.randint(45)])[0])
+    diff.append(pearsonr(match_test_params2[np.random.randint(45)], match_retest_params3[np.random.randint(45)])[0])
+
+sns.distplot(same)
+sns.distplot(diff)
+np.median(same)
+np.median(diff)
+
+match_test_params, match_retest_params = tr.load_parameters(subjects, 'match', parameter_choice, data_path=f'{results_dir}/hcp_testretest',num_sets=5,test_idx=1)

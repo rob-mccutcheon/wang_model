@@ -28,12 +28,12 @@ SC = (SC/np.max(np.max(SC)))*0.2
 NState = 0
 firing_dict = {} #{'y_mean':[],'y_sd':[],'h_mean':[],'h_sd':[],'x_mean':[],'x_sd':[], 'rec_mean':[],'rec_sd':[], 'inter_mean':[],'inter_sd':[]}
 y_l, h_l, x_l, rec_l, inter_l =[], [], [], [], []
-for g in range(1,5):
+for g in range(1,6):
     for i in range(g):
         print(counter)
         try:
             # ParaE = np.loadtxt(f'{home_dir}/results/hcpep/testretestSC/output_{subject}_{i}.txt')[:-1]
-            ParaE = np.loadtxt(f'{home_dir}/results/hcp_testretest/indiv_connect/{session}/output_{subject}_{i}.txt')[:-1]
+            ParaE = np.loadtxt(f'{home_dir}/results/hcp_testretest/groupSC/{session}/output_{subject}_{i}.txt')[:-1]
             ParaE = np.atleast_2d(ParaE).T
             y,h,x,rec,inter = sim.firing_rate(ParaE, SC, NState)
             y_l.append(y)
@@ -62,4 +62,4 @@ for g in range(1,5):
     firing_dict['inter_sd']=np.std(inter, axis=1)
         
 
-    pickle.dump(firing_dict, open(f'{results_dir}/hcp_testretest/indiv_connect/secondary_analysis/{session}/firing_mean{g}_indiv_para_{subject}.pkl', "wb"))
+    pickle.dump(firing_dict, open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/{session}/firing_mean{g}_indiv_para_{subject}.pkl', "wb"))
