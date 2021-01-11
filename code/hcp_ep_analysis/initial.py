@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from statsmodels.stats.multitest import fdrcorrection
-from scipy.stats import ttest_ind
+from scipy.stats import ttest_ind, pearsonr
 import pickle
 
 #define subjects
@@ -49,9 +49,18 @@ for subject in subjects:
     df.loc[df['src_subject_id'] == subject[:4],'strength_0':'strength_67'] = strength
 
     #firing rates
-    firing_dict = pickle.load(open(f'{results_dir}/hcpep/testretestSC/secondary_analysis/firing_mean_indiv_para_{subject}.pkl', "rb"))
+    firing_dict = pickle.load(open(f'{results_dir}/hcpep/testretestSC/secondary_analysis/firing_mean5_indiv_para_{subject}.pkl', "rb"))
     for item in items:
         df.loc[df['src_subject_id'] == subject[:4], f'{item}_0':f'{item}_67'] = firing_dict[item]
+
+
+for i in range(68):
+    print(pearsonr(df[f'rec_mean_{i}'], df[f'inter_mean_{i}']))
+    pearsonr(df['x_mean_1'], df['strength_1'])
+    pearsonr(df['rec_mean_1'], df['strength_1'])
+
+
+
 
 df.iloc[90,:]
 #  Only keep subjects with data
@@ -65,19 +74,28 @@ df_pt = df[df['phenotype']=='Patient']
 param_p=[]
 for i in range(138):
     param_p.append(ttest_ind(df_con[f'param_{i}'], df_pt[f'param_{i}'])[1])
+np.sum(fdrcorrection(param_p)[0])
+np.sum(np.array(param_p)<0.05)
 
 
-np.w
 
 strength_p=[]
 for i in range(68):
-    strength_p.append(ttest_ind(df_con[f'strength_{i}'], df_pt[f'strength_{i}'])[1])
+    strength_p.append(ttest_ind(df_con[f'strength_{i}'], df_pt[f'strength_{i}'])[0])
+np.sum(fdrcorrection(strength_p)[0])
+np.sum(np.array(strength_p)<0.05)
+
+df_con[f'strength_{i}']
+
+sns.distplot(fdrcorrection(strength_p)[1])
+sns.distplot(df_con['strength_22'])
+sns.distplot(df_pt['strength_22'])
 
 items_p = {}
 for item in items:
     plist = []
     for i in range(68):
-        plist.append(ttest_ind(df_con[f'{item}_{i}'], df_pt[f'{item}_{i}'])[0])
+        plist.append(ttest_ind(df_con[f'{item}_{i}'], df_pt[f'{item}_{i}'])[1])
         items_p[item] = plist
     print(np.nanmin(fdrcorrection(plist[:])[1]))
 
@@ -112,6 +130,6 @@ from importlib import reload
 from figures import fs_figures
 reload(fs_figures)
 
-fs_figures.plot_grid(items_p['h_mean'], vmin=-2.5, vmax=2.5)
+fs_figures.plot_grid(items_p['x_mean'], vmin=-3, vmax=3)
 
 np.sum(np.array(items_p['rec_mean'])>0)vmin

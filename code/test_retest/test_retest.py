@@ -377,15 +377,15 @@ items = ['x', 'y', 'h', 'rec', 'inter']
 for item in items:
     tr_dict[item]=[]
 
-for i in range(1,6):
+for i in range(1,7):
     a=[]
     for item in items:
         test_mean = []
         retest_mean = []
         for subject in subjects2:
             #firing rates
-            test_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/test/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
-            retest_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/groupSC/secondary_analysis/retest/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
+            test_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/indiv_connect/secondary_analysis/test/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
+            retest_firing_dict = pickle.load(open(f'{results_dir}/hcp_testretest/indiv_connect/secondary_analysis/retest/firing_mean{i}_indiv_para_{subject}.pkl', "rb"))
             test_mean.append(test_firing_dict[f'{item}_mean'])
             retest_mean.append(retest_firing_dict[f'{item}_mean'])
         a.append(tr.retest_reliability(subjects2, np.array(test_mean), np.array(retest_mean)))

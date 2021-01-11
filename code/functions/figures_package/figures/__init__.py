@@ -1,1 +1,1 @@
-from .fs_figures import get_surface_data,  plot_surf, plot_single, plot_grid
+from .fs_figures import get_dk_surface_data,  plot_surf, plot_single, plot_grid
