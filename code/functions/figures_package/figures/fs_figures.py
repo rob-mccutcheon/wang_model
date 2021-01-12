@@ -40,10 +40,11 @@ def get_dk_surface_data(data_vector, hemi, resolution='fsaverage5', exclude=[0, 
 
 
 def plot_surf(surface_data, view, axes, fig, vmax=1, vmin=-1):
-    cmap = LinearSegmentedColormap.from_list('custom blue', 
-                                            [(0,   '#2166ac' ),
-                                            (0.5, '#ffffff'),
-                                            (1,    '#b2182b')], N=256)
+    # cmap = LinearSegmentedColormap.from_list('custom blue', 
+    #                                         [(0,   '#2166ac' ),
+    #                                         (0.5, '#ffffff'),
+    #                                         (1,    '#b2182b')], N=256)
+    cmap = 'RdBu'
     img = plotting.plot_surf(surface_data['surf_mesh'], 
                         surf_map=surface_data['comp_labels'],
                         hemi=view[0], view=view[1],
@@ -61,7 +62,7 @@ def plot_surf(surface_data, view, axes, fig, vmax=1, vmin=-1):
 
 def plot_single(view, data_vector, axes, fig, resolution='fsaverage5', vmax=1, vmin=-1):
     surface_data = get_dk_surface_data(data_vector, view[0])
-    plot_surf(surface_data, view, axes, fig, vmax=1, vmin=-1)
+    plot_surf(surface_data, view, axes, fig, vmax=vmax, vmin=vmin)
 
 
 def plot_grid(data_vector, vmax=1, vmin=-1):
@@ -70,11 +71,11 @@ def plot_grid(data_vector, vmax=1, vmin=-1):
                             subplot_kw={'projection': '3d'},
                             gridspec_kw={'wspace': 0, 'hspace': 0})
     view = ('left', 'lateral')
-    plot_single(view, data_vector, axs[0][0], fig,vmax=1, vmin=-1)
+    plot_single(view, data_vector, axs[0][0], fig,vmax=vmax, vmin=vmin)
     view = ('left', 'medial')
-    plot_single(view, data_vector, axs[1][0], fig,vmax=1, vmin=-1)
+    plot_single(view, data_vector, axs[1][0], fig,vmax=vmax, vmin=vmin)
     view = ('right', 'lateral')
-    plot_single(view, data_vector, axs[0][1], fig,vmax=1, vmin=-1)
+    plot_single(view, data_vector, axs[0][1], fig,vmax=vmax, vmin=vmin)
     view = ('right', 'medial')
-    plot_single(view, data_vector, axs[1][1], fig,vmax=1, vmin=-1)
+    plot_single(view, data_vector, axs[1][1], fig,vmax=vmax, vmin=vmin)
     plt.tight_layout()
