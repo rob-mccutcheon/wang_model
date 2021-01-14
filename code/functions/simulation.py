@@ -1,7 +1,7 @@
 from functions import wang_functions_imag_fix as wf
 import numpy as np
 
-def firing_rate(para, SC, Nstate):
+def firing_rate(para, SC, Nstate, TBOLD=0.72):
     # Get firing rates
     # simulation time
     Tepochlong=14.4
@@ -25,6 +25,18 @@ def firing_rate(para, SC, Nstate):
 
     # for neural activity y0 = 0
     yT = np.zeros([Nnodes, 1])
+    yT[:, 0] = 0.001
+
+    # for hemodynamic activity z0 = 0, f0 = v0 = q0 =1
+    zT = np.zeros([Nnodes, Bsamples], dtype=np.complex128)
+    fT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
+    fT[:, 0] = 1
+    vT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
+    vT[:, 0] = 1
+    qT = np.zeros([Nnodes,Bsamples], dtype=np.complex128)
+    qT[:,0] = 1
+
+    F = np.array([zT[:,0], fT[:,0], vT[:,0], qT[:,0]]).T
     yT[:, 0] = 0.001
 
     w_coef = para[-1]/np.sqrt(0.001)
@@ -55,8 +67,37 @@ def firing_rate(para, SC, Nstate):
             x_neuro[:,j] = np.squeeze(x)
             rec_neuro[:,j] = np.squeeze(rec)
             inter_neuro[:,j] = np.squeeze(inter)
-            j = j+1     
-    return y_neuro, H_neuro, x_neuro, rec_neuro, inter_neuro
+            j = j+1
+
+    for i in range (1, len(k_PP)):
+        dF = wf.CBIG_MFMem_rfMRI_rfMRI_BW_ode1(y_neuro[:,i-1],F,Nnodes)
+        F = F + dF*dtt
+        zT[:,i] = F[:, 0]
+        fT[:,i] = F[:, 1]
+        vT[:,i] = F[:, 2]
+        qT[:,i] = F[:, 3]
+    
+    p = 0.34
+    v0 = 0.02
+    k1 = 4.3*28.265*3*0.0331*p
+    k2 = 0.47*110*0.0331*p
+    k3 = 1-0.47
+    y_BOLD = 100/p*v0*(k1*(1-qT) + k2*(1-qT/vT) + k3*(1-vT))
+
+    Time = k_PP
+    
+    # (b)&(c) compute simulated FC and correlation of 2 FCs
+    # get the static part
+    cut_indx = np.where(Time == Tpre)[0][0] # after xx s
+    BOLD_cut = y_BOLD[:, cut_indx:]
+    y_neuro_cut = y_neuro[:, cut_indx:]
+    Time_cut = Time[cut_indx:]
+
+    BOLD_d = wf.CBIG_MFMem_rfMRI_simBOLD_downsampling(BOLD_cut,TBOLD/dtt) #down sample 
+
+    FC_sim = np.corrcoef(BOLD_d)     
+
+    return y_neuro, H_neuro, x_neuro, rec_neuro, inter_neuro, FC_sim
 
 def vec2mat(a):
     '''convert connectivity vector to original 2D matrix form

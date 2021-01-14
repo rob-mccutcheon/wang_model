@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pkg_resources
 from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.colors import Normalize
+import matplotlib.cm as cm
 
 
 def get_dk_surface_data(data_vector, hemi, resolution='fsaverage5', exclude=[0, 4]):
@@ -44,7 +46,7 @@ def plot_surf(surface_data, view, axes, fig, vmax=1, vmin=-1):
     #                                         [(0,   '#2166ac' ),
     #                                         (0.5, '#ffffff'),
     #                                         (1,    '#b2182b')], N=256)
-    cmap = 'RdBu'
+    cmap = 'RdBu_r'
     img = plotting.plot_surf(surface_data['surf_mesh'], 
                         surf_map=surface_data['comp_labels'],
                         hemi=view[0], view=view[1],
@@ -56,26 +58,30 @@ def plot_surf(surface_data, view, axes, fig, vmax=1, vmin=-1):
                         bg_on_data=True,
                         title='',
                         figure = fig,
-                        axes = axes                        
+                        axes = axes                      
                             )
+    return img
 
 
 def plot_single(view, data_vector, axes, fig, resolution='fsaverage5', vmax=1, vmin=-1):
     surface_data = get_dk_surface_data(data_vector, view[0])
-    plot_surf(surface_data, view, axes, fig, vmax=vmax, vmin=vmin)
+    return plot_surf(surface_data, view, axes, fig, vmax=vmax, vmin=vmin)
 
 
 def plot_grid(data_vector, vmax=1, vmin=-1):
-    plt.rcParams['figure.figsize'] = [8, 8]
+    plt.rcParams['figure.figsize'] = [10, 10]
     fig, axs = plt.subplots(nrows=2, ncols=2,
                             subplot_kw={'projection': '3d'},
                             gridspec_kw={'wspace': 0, 'hspace': 0})
     view = ('left', 'lateral')
-    plot_single(view, data_vector, axs[0][0], fig,vmax=vmax, vmin=vmin)
+    a = plot_single(view, data_vector, axs[0][0], fig,vmax=vmax, vmin=vmin)
     view = ('left', 'medial')
-    plot_single(view, data_vector, axs[1][0], fig,vmax=vmax, vmin=vmin)
+    b = plot_single(view, data_vector, axs[1][0], fig,vmax=vmax, vmin=vmin)
     view = ('right', 'lateral')
-    plot_single(view, data_vector, axs[0][1], fig,vmax=vmax, vmin=vmin)
+    c = plot_single(view, data_vector, axs[0][1], fig,vmax=vmax, vmin=vmin)
     view = ('right', 'medial')
-    plot_single(view, data_vector, axs[1][1], fig,vmax=vmax, vmin=vmin)
-    plt.tight_layout()
+    d = plot_single(view, data_vector, axs[1][1], fig,vmax=vmax, vmin=vmin)
+    normalizer=Normalize(vmin, vmax)
+    im = cm.ScalarMappable(cmap='RdBu_r', norm=normalizer)
+    fig.colorbar(im, ax=axs, shrink=0.6, aspect=15)
+    # plt.tight_layout()

@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import pandas as pd
 import seaborn as sns
 from statsmodels.stats.multitest import fdrcorrection
@@ -21,6 +22,8 @@ for i in range(138):
     df[f"param_{i}"] = 0
 for i in range(68):
     df[f"strength_{i}"] = 0
+for i in range(68):
+    df[f"strength_sim_{i}"] = 0
 
 items = ['y_mean', 'h_mean', 'x_mean', 'rec_mean', 'inter_mean']
 for item in items:
@@ -32,15 +35,15 @@ for item in items:
 for subject in subjects:
     # params
     params = []
-    # for i in range(5):
-    #     try:
-    #         params.append(np.loadtxt(f'{home_dir}/results/hcpep/testretestSC/output_{subject}_{i}.txt')[:-1])
-    #     except:
-    #         continue
-    try:
-        params.append(np.loadtxt(f'{home_dir}/results/hcpep/testretestSC/output_{subject}_0.txt')[:-1])
-    except:
-        continue
+    for i in range(5):
+        try:
+            params.append(np.loadtxt(f'{home_dir}/results/hcpep/testretestSC/output_{subject}_{i}.txt')[:-1])
+        except:
+            continue
+    # try:
+    #     params.append(np.loadtxt(f'{home_dir}/results/hcpep/testretestSC/output_{subject}_0.txt')[:-1])
+    # except:
+    #     continue
     df.loc[df['src_subject_id'] == subject[:4],'param_0':'param_137'] = np.mean(params, 0)
     
     # strength
@@ -53,6 +56,13 @@ for subject in subjects:
     firing_dict = pickle.load(open(f'{results_dir}/hcpep/testretestSC/secondary_analysis/firing_mean5_indiv_para_{subject}.pkl', "rb"))
     for item in items:
         df.loc[df['src_subject_id'] == subject[:4], f'{item}_0':f'{item}_67'] = firing_dict[item]
+        cmz = np.loadtxt(f'{home_dir}/data/hcp_scz/{subject}/{subject}_dk_pearson.csv', delimiter=',')
+    
+    #sim strength
+    cm_sim = firing_dict['FCsim']
+    np.fill_diagonal(cm_sim, 0)
+    strength_sim = np.sum(cm_sim, axis=1)
+    df.loc[df['src_subject_id'] == subject[:4],'strength_sim_0':'strength_sim_67'] = strength_sim
 
 
 #multilevel
@@ -93,17 +103,28 @@ df_pt = df[df['phenotype']=='Patient']
 #t-test
 param_p=[]
 for i in range(138):
-    param_p.append(ttest_ind(df_con[f'param_{i}'], df_pt[f'param_{i}'])[1])
-np.sum(fdrcorrection(param_p)[0])
+    param_p.append(ttest_ind(df_con[f'param_{i}'], df_pt[f'param_{i}'])[0])
+np.sum(fdrcorrection(param_p[68:])[0])
 np.sum(np.array(param_p)<0.05)
 
 
-
+# True and simulated strength
 strength_p=[]
 for i in range(68):
     strength_p.append(ttest_ind(df_con[f'strength_{i}'], df_pt[f'strength_{i}'])[0])
 np.sum(fdrcorrection(strength_p)[0])
 np.sum(np.array(strength_p)<0.05)
+
+
+simdf=df[df['strength_sim_0']>0]
+simdf_con = simdf[simdf['phenotype']=='Control']
+simdf_pt = simdf[simdf['phenotype']=='Patient']
+strength_sim_p=[]
+for i in range(68):
+    strength_sim_p.append(ttest_ind(simdf_con[f'strength_sim_{i}'], simdf_pt[f'strength_sim_{i}'])[0])
+
+sns.scatterplot(strength_p, strength_sim_p)
+pearsonr(strength_p, strength_sim_p)
 
 df_con[f'strength_{i}']
 
@@ -115,12 +136,12 @@ items_p = {}
 for item in items:
     plist = []
     for i in range(68):
-        plist.append(ttest_ind(df_con[f'{item}_{i}'], df_pt[f'{item}_{i}'])[0])
+        plist.append(ttest_ind(df_pt[f'{item}_{i}'], df_con[f'{item}_{i}'])[0])
         items_p[item] = plist
     print(np.nanmin(fdrcorrection(plist[:])[1]))
 
-
-sns.distplot(items_p['inter_mean'])
+fdrcorrection(items_p['x_mean'])
+sns.distplot(items_p['rec_mean'])
 np.argmin(items_p['y_mean'])
 
 np.sum(np.array(items_p['inter_mean'])>0)/68
@@ -133,10 +154,19 @@ sns.distplot(df_pt['y_mean_46'].values)
 
 np.nanmin(fdrcorrection(param_p[:])[1])
 
+#mean
+item='rec_mean'
 for item in items:
     a=df_con.loc[:,f'{item}_0':f'{item}_67'].mean(axis=1).values
     b=df_pt.loc[:,f'{item}_0':f'{item}_67'].mean(axis=1).values
     print(ttest_ind(a, b))
+
+a=df_con.loc[:,f'param_0':'param_67'].mean(axis=1).values
+b=df_pt.loc[:,f'param_0':'param_67'].mean(axis=1).values
+a=df_con.loc[:,f'param_67':'param_135'].mean(axis=1).values
+b=df_pt.loc[:,f'param_67':'param_135'].mean(axis=1).values
+print(ttest_ind(a, b))
+
 
 a=df_con.loc[:,'strength_0':'strength_67'].mean(axis=1).values
 b=df_pt.loc[:,'strength_0':'strength_67'].mean(axis=1).values
@@ -148,17 +178,10 @@ from importlib import reload
 from figures import fs_figures
 reload(fs_figures)
 
+np.max(items_p['rec_mean'])
 
-
-np.sum(np.array(items_p['inter_mean'])>0)/68
-
-np.min(items_p['h_mean'])
-np.max(items_p['h_mean'])
-
-
-fs_figures.plot_grid(items_p['h_mean'], vmin=-3.3, vmax=3.3)
-fs_figures.plot_grid(strength_p, vmin=-4, vmax=4)
-plt.savefig(f'{results_dir}/figures/pilot_figures/h_test.png', dpi=300)
+fs_figures.plot_grid(items_p['rec_mean'], vmin=-3.1, vmax=3.1)
+plt.savefig(f'{results_dir}/figures/pilot_figures/rec_test.png', dpi=300)
 
 fs_figures.plot_grid(np.linspace(1,-1,68), vmin=-68, vmax=68)
 fs_figures.plot_grid(np.arange(68), vmin=0, vmax=68)
@@ -176,7 +199,8 @@ pearsonr(con_rec2, pt_rec)
 
 
 
-con_rec = df_con.loc[:,'param_0':'param_67'].mean().values
+con_recw = df_con.loc[:,'param_0':'param_67'].mean().values
+con_reci = df_con.loc[:,'param_68':'param_135'].mean().values
 con_rec1 = df_con.loc[:,'param_0':'param_67'].iloc[:25].mean().values
 con_rec2 = df_con.loc[:,'param_0':'param_67'].iloc[25:].mean().values
 pt_rec = df_pt.loc[:,'param_0':'param_67'].mean().values
@@ -189,5 +213,31 @@ pt_rec = df_pt.loc[:,'strength_0':'strength_67'].mean().values
 sns.distplot(con_rec)
 sns.distplot(pt_rec)
 
-sns.scatterplot(con_rec, pt_rec)
+sns.scatterplot(con_recw, con_reci)
 sns.lineplot(np.linspace(np.min(con_rec), np.max(con_rec),5), np.linspace(np.min(con_rec), np.max(con_rec),5))
+
+
+df_con.loc[:,'rec_mean_'].values
+np.argmax(items_p['rec_mean'])
+sns.scatterplot()
+
+values = np.hstack([df_con.loc[:,'rec_mean_8'].values,  df_pt.loc[:,'rec_mean_8'].values])
+values = np.hstack([a,b])
+group = ['Control']*df_con.loc[:,'rec_mean_2'].shape[0]+ ['Patient']*df_pt.loc[:,'rec_mean_2'].shape[0]
+
+sns.set_style('white')
+PROPS = {
+    'boxprops':{'facecolor':'none', 'edgecolor':'black'},
+    'medianprops':{'color':'black'},
+    'whiskerprops':{'color':'black'},
+    'capprops':{'color':'black'}
+}
+plt.rcParams['figure.figsize'] = [5, 5]
+sns.stripplot(group, values, palette={'Control': 'blue', 'Patient':'red'})
+plt.ylabel('Recurrent Input')
+sns.boxplot(group,values, palette={'Control': 'white', 'Patient':'white'}, whis=2, **PROPS)
+sns.despine(top=True, right=True, left=False, bottom=False)
+plt.savefig(f'{results_dir}/figures/pilot_figures/rec8_scatter.png', dpi=300)
+
+
+ttest_ind(df_con.loc[:,'rec_mean_8'].values,  df_pt.loc[:,'rec_mean_8'].values)
