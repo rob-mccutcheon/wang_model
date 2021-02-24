@@ -2,6 +2,13 @@ from functions import wang_functions_imag_fix as wf
 import numpy as np
 
 def firing_rate(para, SC, Nstate, TBOLD=0.72):
+
+    '''
+    y: neural state
+    x: total input (rec+inter +I0)
+    h: firing rate
+
+    '''
     # Get firing rates
     # simulation time
     Tepochlong=14.4
@@ -59,7 +66,7 @@ def firing_rate(para, SC, Nstate, TBOLD=0.72):
     inter_neuro = np.zeros([Nnodes, len(k_P)])
     # y_neuro = y_neuro.astype(np.complex128)
     for i in range(0,len(k_P)):
-        dy, H, x, rec, inter = wf.CBIG_MFMem_rfMRI_mfm_ode1b(yT,para,SC, )
+        dy, H, x, rec, inter = wf.CBIG_MFMem_rfMRI_mfm_ode1b(yT,para,SC)
         yT = yT + dy*dt + (np.atleast_2d(w_coef*dW[:,i+1000])).T
         if i%(dtt/dt) == 0:
             y_neuro[:,j] = np.squeeze(yT)

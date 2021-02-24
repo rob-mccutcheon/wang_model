@@ -370,9 +370,10 @@ sns.scatterplot(group, (corr+corr2))
 
 
 # firing rate - mean
-
+subjects2=subjects
 subjects2 = subjects[:26]+subjects[27:]
 tr_dict = {}
+tr_dict_all = {}
 items = ['x', 'y', 'h', 'rec', 'inter']
 for item in items:
     tr_dict[item]=[]
@@ -389,6 +390,7 @@ for i in range(1,7):
             test_mean.append(test_firing_dict[f'{item}_mean'])
             retest_mean.append(retest_firing_dict[f'{item}_mean'])
         a.append(tr.retest_reliability(subjects2, np.array(test_mean), np.array(retest_mean)))
+        # print(f'single {tr.retest_reliability(subjects2, np.atleast_2d(np.mean(np.array(test_mean), axis=1)).T, np.atleast_2d(np.mean(np.array(retest_mean), axis=1)).T)}')
         tr_dict[item].append(np.median(a))
         print(f'{item} {i} {np.median(a)}')
         # print(tr.retest_reliability(subjects, np.atleast_2d(np.mean(np.array(test_mean),axis=1)).T, np.atleast_2d(np.mean(np.array(retest_mean), axis=1)).T))
@@ -397,7 +399,7 @@ for i in range(1,7):
 tr.retest_reliability(subjects, np.atleast_2d(np.mean(np.array(test_mean),axis=1)).T, np.atleast_2d(np.mean(np.array(retest_mean), axis=1)).T)
 
 for item in items:
-    sns.lineplot(np.arange(5), tr_dict[item])
+    sns.lineplot(np.arange(6), tr_dict[item])
 
 
 np.mean(np.array(test_mean),axis=1).shape

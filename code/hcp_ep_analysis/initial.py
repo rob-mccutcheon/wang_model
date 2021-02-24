@@ -11,7 +11,7 @@ home_dir = '/users/k1201869/wang_model'
 results_dir = f'{home_dir}/results'
 subjects = os.listdir(f'{home_dir}/data/hcp_scz')
 subjects.sort()
-subjects = subjects[:-4]
+subjects = subjects[:-6]
 
 # make df
 df = pd.read_csv(f'{home_dir}/data/hcp_scz/ndar_subject01.txt', delimiter="\t")
@@ -25,7 +25,7 @@ for i in range(68):
 for i in range(68):
     df[f"strength_sim_{i}"] = 0
 
-items = ['y_mean', 'h_mean', 'x_mean', 'rec_mean', 'inter_mean']
+items = ['y_mean', 'h_mean', 'x_mean', 'rec_mean', 'inter_mean', 'rec_ratio_mean']
 for item in items:
     for i in range(68):
         df[f"{item}_{i}"] = 0
@@ -53,7 +53,7 @@ for subject in subjects:
     df.loc[df['src_subject_id'] == subject[:4],'strength_0':'strength_67'] = strength
 
     #firing rates
-    firing_dict = pickle.load(open(f'{results_dir}/hcpep/testretestSC/secondary_analysis/firing_mean5_indiv_para_{subject}.pkl', "rb"))
+    firing_dict = pickle.load(open(f'{results_dir}/hcpep/testretestSC/secondary_analysis/firing_mean6_indiv_para_{subject}.pkl', "rb"))
     for item in items:
         df.loc[df['src_subject_id'] == subject[:4], f'{item}_0':f'{item}_67'] = firing_dict[item]
         cmz = np.loadtxt(f'{home_dir}/data/hcp_scz/{subject}/{subject}_dk_pearson.csv', delimiter=',')
@@ -103,15 +103,25 @@ df_pt = df[df['phenotype']=='Patient']
 #t-test
 param_p=[]
 for i in range(138):
-    param_p.append(ttest_ind(df_con[f'param_{i}'], df_pt[f'param_{i}'])[0])
-np.sum(fdrcorrection(param_p[68:])[0])
+    param_p.append(ttest_ind(df_con[f'param_{i}'], df_pt[f'param_{i}'])[1])
+    param_p.append(ttest_ind(df_con[f'param_{i}'], df_pt[f'param_{i}'])[1])
+
+a=df_con.loc[:,'param_0':'param_67'].mean(axis=1).values
+b=df_pt.loc[:,'param_0':'param_67'].mean(axis=1).values
+print(ttest_ind(a, b))
+
+a=df_con.loc[:,'param_68':'param_135'].mean(axis=1).values
+b=df_pt.loc[:,'param_68':'param_135'].mean(axis=1).values
+print(ttest_ind(a, b))
+
+np.sum(fdrcorrection(param_p[:68])[0])
 np.sum(np.array(param_p)<0.05)
 
 
 # True and simulated strength
 strength_p=[]
 for i in range(68):
-    strength_p.append(ttest_ind(df_con[f'strength_{i}'], df_pt[f'strength_{i}'])[0])
+    strength_p.append(ttest_ind(df_con[f'strength_{i}'], df_pt[f'strength_{i}'])[1])
 np.sum(fdrcorrection(strength_p)[0])
 np.sum(np.array(strength_p)<0.05)
 
@@ -132,15 +142,18 @@ sns.distplot(fdrcorrection(strength_p)[1])
 sns.distplot(df_con['strength_22'])
 sns.distplot(df_pt['strength_22'])
 
+# need to index[1] for p value and [0] for t value for freesurfer diagram
 items_p = {}
 for item in items:
     plist = []
     for i in range(68):
         plist.append(ttest_ind(df_pt[f'{item}_{i}'], df_con[f'{item}_{i}'])[0])
         items_p[item] = plist
+    print(item)
     print(np.nanmin(fdrcorrection(plist[:])[1]))
+    print(np.nanmin(plist[:]))
 
-fdrcorrection(items_p['x_mean'])
+fdrcorrection(items_p['rec_mean'])
 sns.distplot(items_p['rec_mean'])
 np.argmin(items_p['y_mean'])
 
@@ -160,6 +173,10 @@ for item in items:
     a=df_con.loc[:,f'{item}_0':f'{item}_67'].mean(axis=1).values
     b=df_pt.loc[:,f'{item}_0':f'{item}_67'].mean(axis=1).values
     print(ttest_ind(a, b))
+
+np.std(a)
+np.std(b)
+len(b)
 
 a=df_con.loc[:,f'param_0':'param_67'].mean(axis=1).values
 b=df_pt.loc[:,f'param_0':'param_67'].mean(axis=1).values
@@ -221,7 +238,9 @@ df_con.loc[:,'rec_mean_'].values
 np.argmax(items_p['rec_mean'])
 sns.scatterplot()
 
-values = np.hstack([df_con.loc[:,'rec_mean_8'].values,  df_pt.loc[:,'rec_mean_8'].values])
+values = np.hstack([df_con.loc[:,'rec_mean_7'].values,  df_pt.loc[:,'rec_mean_7'].values])
+values = np.hstack([df_con.loc[:,'rec_mean_0':'rec_mean_67'].mean(axis=1).values,  df_pt.loc[:,'rec_mean_0':'rec_mean_67'].mean(axis=1).values])
+
 values = np.hstack([a,b])
 group = ['Control']*df_con.loc[:,'rec_mean_2'].shape[0]+ ['Patient']*df_pt.loc[:,'rec_mean_2'].shape[0]
 
@@ -230,14 +249,83 @@ PROPS = {
     'boxprops':{'facecolor':'none', 'edgecolor':'black'},
     'medianprops':{'color':'black'},
     'whiskerprops':{'color':'black'},
-    'capprops':{'color':'black'}
+    'capprops':{'color':'black'},
+    'showfliers':{False}
 }
 plt.rcParams['figure.figsize'] = [5, 5]
 sns.stripplot(group, values, palette={'Control': 'blue', 'Patient':'red'})
 plt.ylabel('Recurrent Input')
-sns.boxplot(group,values, palette={'Control': 'white', 'Patient':'white'}, whis=2, **PROPS)
+sns.boxplot(group,values, palette={'Control': 'white', 'Patient':'white'}, whis=2,fliersize=0.1, **PROPS)
 sns.despine(top=True, right=True, left=False, bottom=False)
 plt.savefig(f'{results_dir}/figures/pilot_figures/rec8_scatter.png', dpi=300)
 
 
-ttest_ind(df_con.loc[:,'rec_mean_8'].values,  df_pt.loc[:,'rec_mean_8'].values)
+ttest_ind(df_con.loc[:,'rec_mean_13'].values,  df_pt.loc[:,'rec_mean_13'].values)
+
+# relationship with symptoms
+cains = pd.read_csv(f'{home_dir}/data/hcp_scz/clinical/cains01.txt', delimiter="\t")
+acpt = pd.read_csv(f'{home_dir}/data/hcp_scz/clinical/acpt01.txt', delimiter="\t")
+wasi = pd.read_csv(f'{home_dir}/data/hcp_scz/clinical/wasi201.txt', delimiter="\t")
+dd = pd.read_csv(f'{home_dir}/data/hcp_scz/clinical/deldisk01.txt', delimiter="\t")
+df_full = df.set_index('src_subject_id').join(wasi.set_index('src_subject_id'), lsuffix='', rsuffix='_add')
+
+
+df_full_pt = df_full[df_full['phenotype']=='Patient']
+df_full_pt['rec_mean_overall'] = df_full_pt.loc[:,'rec_mean_0':'rec_mean_67'].mean(axis=1).values
+
+temp_idx = ['rec_mean_7','rec_mean_13','rec_mean_28','rec_mean_41','rec_mean_47','rec_mean_62']
+temp_idx = ['rec_mean_7','rec_mean_13','rec_mean_14','rec_mean_28','rec_mean_41','rec_mean_47','rec_mean_48','rec_mean_62']
+temp_idx = ['rec_mean_7','rec_mean_13','rec_mean_14','rec_mean_28','rec_mean_41','rec_mean_47','rec_mean_48','rec_mean_62',  'rec_mean_4','rec_mean_38','rec_mean_8','rec_mean_42','rec_mean_31','rec_mean_65','rec_mean_32','rec_mean_66','rec_mean_33','rec_mean_67']
+temp_idx = ['rec_mean_7','rec_mean_13','rec_mean_14','rec_mean_28','rec_mean_41','rec_mean_47','rec_mean_48','rec_mean_62',  'rec_mean_4','rec_mean_38','rec_mean_8','rec_mean_42','rec_mean_31','rec_mean_65','rec_mean_32','rec_mean_66','rec_mean_33','rec_mean_67']
+temp_idx = ['rec_mean_4','rec_mean_7','rec_mean_8','rec_mean_13','rec_mean_14','rec_mean_28']
+
+
+df_full_pt['rec_mean_temporal'] = df_full_pt.loc[:,temp_idx].mean(axis=1).values
+
+#cains_ssum
+#'matrix_totalrawscore', 'profilesubtest_performancemr', 'wasi_matrix_perc'
+# auditory_t14
+# auc_200
+cog_item = 'matrix_totalrawscore'
+df_full_pt = df_full_pt.dropna(subset=[cog_item])
+df_full = df_full.dropna(subset=[cog_item])
+
+
+# I think 14 is middle temporal, 7 is inf temp
+sns.scatterplot(df_full_pt['rec_mean_8'], df_full_pt[cog_item].astype(np.float))
+pearsonr(df_full_pt['rec_mean_14'], df_full_pt[cog_item].astype(np.float))
+
+
+p_perm_collec = []
+perm_idx= np.arange(86)
+for h in range(100):
+    np.random.shuffle(perm_idx)
+    p_perms = []
+    ps=[]
+    for i in range(68): 
+        p = pearsonr(df_full_pt[f'rec_mean_{i}'], df_full_pt[cog_item].astype(np.float))
+        p_perm = pearsonr(df_full_pt[f'rec_mean_{i}'].values[perm_idx], df_full_pt[cog_item].astype(np.float).values)
+        ps.append(p[1])
+        p_perms.append(p_perm[0])
+    p_perm_collec.append(p_perms)
+fdrcorrection(ps)
+
+pearsonr(df_full_pt[f'rec_mean_temporal'], df_full_pt[cog_item].astype(np.float))
+
+sns.regplot(df_full_pt[f'rec_mean_temporal'], df_full_pt[cog_item].astype(np.float))
+
+for idx in temp_idx:
+    print(idx)
+    print(spearmanr(df_full_pt[idx], df_full_pt[cog_item].astype(np.float)))
+sns.scatterplot(df_full_pt[f'rec_mean_overall'], df_full_pt[cog_item].astype(np.float))
+
+fs_figures.plot_grid(ps, vmin=-0.3, vmax=0.3)
+
+pearsonr(items_p['rec_mean'], ps)
+
+perm_results=[]
+for i in range(100):
+    perm_results.append(abs(pearsonr(items_p['rec_mean'], p_perm_collec[i])[0]))
+
+np.sum(np.array(perm_results)>0.37)
+sns.scatterplot(ps, items_p['rec_mean'])
