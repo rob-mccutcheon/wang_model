@@ -147,15 +147,18 @@ items_p = {}
 for item in items:
     plist = []
     for i in range(68):
-        plist.append(ttest_ind(df_pt[f'{item}_{i}'], df_con[f'{item}_{i}'])[0])
+        plist.append(ttest_ind(df_pt[f'{item}_{i}'], df_con[f'{item}_{i}'])[1])
         items_p[item] = plist
     print(item)
     print(np.nanmin(fdrcorrection(plist[:])[1]))
     print(np.nanmin(plist[:]))
 
 fdrcorrection(items_p['rec_mean'])
+np.min(items_p['rec_mean'])
 sns.distplot(items_p['rec_mean'])
 np.argmin(items_p['y_mean'])
+
+items_p['rec_mean'][13]
 
 np.sum(np.array(items_p['inter_mean'])>0)/68
 
@@ -173,6 +176,13 @@ for item in items:
     a=df_con.loc[:,f'{item}_0':f'{item}_67'].mean(axis=1).values
     b=df_pt.loc[:,f'{item}_0':f'{item}_67'].mean(axis=1).values
     print(ttest_ind(a, b))
+
+temp_idx = ['rec_mean_0','rec_mean_7','rec_mean_13','rec_mean_14','rec_mean_28','rec_mean_34','rec_mean_41','rec_mean_47','rec_mean_48','rec_mean_62',  'rec_mean_4','rec_mean_38','rec_mean_8','rec_mean_42','rec_mean_31','rec_mean_65','rec_mean_32','rec_mean_66','rec_mean_33','rec_mean_67']
+frontal_idx = ['rec_mean_1','rec_mean_2','rec_mean_10', 'rec_mean_12', 'rec_mean_16','rec_mean_17','rec_mean_18','rec_mean_25','rec_mean_26','rec_mean_30',
+            'rec_mean_35','rec_mean_36','rec_mean_44','rec_mean_46','rec_mean_50','rec_mean_51','rec_mean_52','rec_mean_59','rec_mean_60']
+a=df_con.loc[:,(frontal_idx+temp_idx)].mean(axis=1).values
+b=df_pt.loc[:,(frontal_idx+temp_idx)].mean(axis=1).values
+print(ttest_ind(a, b))
 
 np.std(a)
 np.std(b)
@@ -280,7 +290,10 @@ temp_idx = ['rec_mean_7','rec_mean_13','rec_mean_14','rec_mean_28','rec_mean_41'
 temp_idx = ['rec_mean_4','rec_mean_7','rec_mean_8','rec_mean_13','rec_mean_14','rec_mean_28']
 
 
-df_full_pt['rec_mean_temporal'] = df_full_pt.loc[:,temp_idx].mean(axis=1).values
+temp_idx = ['rec_mean_0','rec_mean_7','rec_mean_13','rec_mean_14','rec_mean_28','rec_mean_34','rec_mean_41','rec_mean_47','rec_mean_48','rec_mean_62',  'rec_mean_4','rec_mean_38','rec_mean_8','rec_mean_42','rec_mean_31','rec_mean_65','rec_mean_32','rec_mean_66','rec_mean_33','rec_mean_67']
+frontal_idx = ['rec_mean_1','rec_mean_2','rec_mean_10', 'rec_mean_12', 'rec_mean_16','rec_mean_17','rec_mean_18','rec_mean_25','rec_mean_26','rec_mean_30',
+            'rec_mean_35','rec_mean_36','rec_mean_44','rec_mean_46','rec_mean_50','rec_mean_51','rec_mean_52','rec_mean_59','rec_mean_60']
+df_full_pt['rec_mean_temporal'] = df_full_pt.loc[:,(temp_idx+frontal_idx)].mean(axis=1).values
 
 #cains_ssum
 #'matrix_totalrawscore', 'profilesubtest_performancemr', 'wasi_matrix_perc'
@@ -290,7 +303,7 @@ cog_item = 'matrix_totalrawscore'
 df_full_pt = df_full_pt.dropna(subset=[cog_item])
 df_full = df_full.dropna(subset=[cog_item])
 
-
+pearsonr(df_full_pt[f'rec_mean_temporal'], df_full_pt[cog_item].astype(np.float))
 # I think 14 is middle temporal, 7 is inf temp
 sns.scatterplot(df_full_pt['rec_mean_8'], df_full_pt[cog_item].astype(np.float))
 pearsonr(df_full_pt['rec_mean_14'], df_full_pt[cog_item].astype(np.float))
@@ -310,7 +323,7 @@ for h in range(100):
     p_perm_collec.append(p_perms)
 fdrcorrection(ps)
 
-pearsonr(df_full_pt[f'rec_mean_temporal'], df_full_pt[cog_item].astype(np.float))
+
 
 sns.regplot(df_full_pt[f'rec_mean_temporal'], df_full_pt[cog_item].astype(np.float))
 

@@ -8,6 +8,7 @@ from functions import test_retest_funcs as tr
 from functions import simulation as sim
 import pickle
 
+
 home_dir = '/users/k1201869/wang_model'
 data_dir = f'{home_dir}/data'
 results_dir = f'{home_dir}/results'

@@ -1,6 +1,7 @@
 import sys
 import os
 import numpy as np
+sys.path.insert(0, '../model_fitting')
 import wang_functions_imag_fix as wf
 from joblib import Parallel, delayed
 import pandas as pd
@@ -12,10 +13,12 @@ import shutil
 import copy
 import pickle
 
+os.chdir('/users/k1201869/wang_model/code/model_fitting')
+
 #subject
 subject_idx = int(sys.argv[1])-1
 subject_list = np.squeeze(pd.read_table("/users/k1201869/wang_model/code/riluzole_analysis/subjects.list", header=None).values)
-subject = subject_list.iloc[subject_idx].values[0]
+subject = subject_list[subject_idx]
 print(f'subject {subject}')
 
 # Set paths for where structural and functional connectivity matrices are stored
@@ -36,34 +39,15 @@ SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/hcp_testretest/dti_collat
 # SC = SC[valid_rois][:,valid_rois]
 # np.fill_diagonal(SC, 0) #dfelte if not indiv
 
-FC = np.loadtxt(open(fc_file, "rb"), delimiter=" ")
-np.fill_diagonal(FC,1)
-SC = (SC/np.max(np.max(SC)))*0.2
-
 #need to delete the rois that dont match
+
+FC = np.loadtxt(open(fc_file, "rb"), delimiter=" ")
 FC = FC[34:][:,34:]
-sns.heatmap(FC, cmap='RdBu', center=0)
-sns.heatmap(SC)
-FC[5,5]
-a=FC==1
-a.shape
-sns.heatmap(a)
-np.sum(FC==1)
-len(np.diag(FC)==1)
-
-
-sns.heatmap(FC)
-[0,30,31,34,63,64]
-nan_list =  []
-for i in range(60):
-    subject = subject_list.iloc[i].values[0]
-    fc_file = f'{data_dir}/{subject}_cm.txt'
-    FC = np.loadtxt(open(fc_file, "rb"), delimiter=" ")
-    nan_list.append(np.sum(np.isnan(np.nansum(FC, axis=1)))
-
-
-np.where(np.nansum(FC, axis=1)==0)
-labels[42]
+np.fill_diagonal(FC,1)
+delete_nodes = [0,30,31,34,64,65]
+SC = np.delete(SC, delete_nodes, 0)
+SC = np.delete(SC, delete_nodes, 1)
+SC = (SC/np.max(np.max(SC)))*0.2
 
 # find out number of brain regions
 NumC = len(np.diag(SC))
@@ -80,9 +64,9 @@ p = 2*NumC + 2 # number of estimated parametera
 
 init_version = 0
 try:
-    init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/hcpep/testretestSC/{subject}')))
-    saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/hcpep/testretestSC/{subject}/{init_version}')[0]
-    saved_variables = pickle.load(open(f'/users/k1201869/wang_model/temp/hcpep/testretestSC/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
+    init_version = int(max(os.listdir(f'/users/k1201869/wang_model/temp/glucog/testretestSC/{subject}')))
+    saved_variables_filename = os.listdir(f'/users/k1201869/wang_model/temp/glucog/testretestSC/{subject}/{init_version}')[0]
+    saved_variables = pickle.load(open(f'/users/k1201869/wang_model/temp/glucog/testretestSC/{subject}/{init_version}/{saved_variables_filename}', 'rb'))
     print('loaded saved variables')
 except:
     print('no variables loaded')
@@ -491,7 +475,7 @@ for version in range(init_version, version_max):
 
 
         # Save variables so in case of crash we can recover
-        temp_directory = f'/users/k1201869/wang_model/temp/hcpep/testretestSC/{subject}/{version}'
+        temp_directory = f'/users/k1201869/wang_model/temp/glucog/testretestSC/{subject}/{version}'
         if not os.path.exists(temp_directory):
             os.makedirs(temp_directory)
         saved_variables = {'step': step, 'Para_E': Para_E, 'rrr':rrr, 'rrr_z':rrr_z, 'Para_E_step_save':Para_E_step_save, 'lembda_step_save':lembda_step_save, 'CC_check_step': CC_check_step, 'version_max': version_max}

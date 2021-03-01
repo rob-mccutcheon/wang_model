@@ -10,18 +10,23 @@ import bct
 from functions import test_retest_funcs as tr
 
 # Get empirical SC ad FC
-home_dir = '/users/k1201869/wang_model/data/hcp_testretest/'
+home_dir = '/users/k1201869/wang_model/data/glucog'
 subject='105923'
-subject='146129'
-data_dir = f'{home_dir}/retest/{subject}'
+subject='glucog01a'
+data_dir = f'{home_dir}'
 #SC = np.loadtxt(open(f"{home_dir}/dti_collated_retest/{subject}_SC.csv", "rb"), delimiter=" ")
-SC = np.loadtxt(open(f"{home_dir}/dti_collated_retest/group_retest_SC.csv", "rb"), delimiter=" ")
+SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/hcp_testretest/dti_collated_retest/group_retest_SC.csv", "rb"), delimiter=" ")
+delete_nodes = [0,30,31,34,64,65]
+SC = np.delete(SC, delete_nodes, 0)
+SC = np.delete(SC, delete_nodes, 1)
 SC = (SC/np.max(np.max(SC)))*0.2
-FC = np.loadtxt(open(f'{data_dir}/cm_combined.csv', "rb"), delimiter=" ")
+
+FC = np.loadtxt(open(f'{data_dir}/{subject}_cm.txt', "rb"), delimiter=" ")
+FC = FC[34:][:,34:]
+np.fill_diagonal(FC,1)
 
 # Load fitted parameters
-home_dir2 = '/users/k1201869/wang_model/results/hcp_testretest/groupSC'
-results_dir = f'{home_dir2}/retest'
+results_dir = '/users/k1201869/wang_model/results/glucog/testretestSC'
 Para_E = np.loadtxt(open(f'{results_dir}/output_{subject}_0.txt'))[:-1]
 Para_E = np.atleast_2d(Para_E).T
 FC_mask = np.tril(np.ones([np.size(SC, 0), np.size(SC, 0)]), 0)
