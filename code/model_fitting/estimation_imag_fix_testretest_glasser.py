@@ -35,8 +35,10 @@ EstimationMaxStep = 30
 fc_file = f'{data_dir}/{subject}_glasser_pearson.csv'
 SC = np.loadtxt(open(f"/users/k1201869/wang_model/data/SC_glasser.csv", "rb"), delimiter=",")
 FC = np.loadtxt(open(fc_file, "rb"), delimiter=",")
-SC = SC[:,:360][:360, :]*0.2
+SC = SC[:,:360][:360, :]
 SC = SC**0.5
+SC= (SC/np.max(np.max(SC)))*0.2
+
 
 # find out number of brain regions
 NumC = len(np.diag(SC))
